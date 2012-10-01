@@ -9,5 +9,7 @@ package com.objet.lofteurs;
  * @author QSL
  */
 public class Vorace {
-    
+    public void cycleDeVie() {
+    	
+    }
 }

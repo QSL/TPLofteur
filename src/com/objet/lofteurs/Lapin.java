@@ -9,5 +9,8 @@ package com.objet.lofteurs;
  * @author QSL
  */
 public class Lapin {
-    
+    public void cycleDeVie() {
+    	
+    	
+    }
 }

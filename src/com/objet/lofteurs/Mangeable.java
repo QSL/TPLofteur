@@ -8,6 +8,12 @@ package com.objet.lofteurs;
  *
  * @author QSL
  */
-public class Mangeable {
-    
+public abstract class Mangeable {
+    protected int valeurenergie;
+    public void setValeurEnergie(int valeurenergie) {
+    	
+    }
+    public int getValeurEnergie() {
+    	return this.valeurenergie;
+    }
 }
