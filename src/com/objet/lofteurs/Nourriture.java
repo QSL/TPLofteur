@@ -9,5 +9,20 @@ package com.objet.lofteurs;
  * @author QSL
  */
 public class Nourriture {
+    protected Case position;
+    
+    /**
+     *Getter de la position de la Nourriture
+     */
+    public Case getPosition(){
+        return this.position;        
+    }
+    
+    /**
+     *Setter de la position de la Nourriture
+     */
+    public void setPosition(Case newCase){
+        this.position=newCase;
+    }
     
 }
