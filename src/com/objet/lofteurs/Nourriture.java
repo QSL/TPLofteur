@@ -8,7 +8,7 @@ package com.objet.lofteurs;
  *
  * @author QSL
  */
-public class Nourriture {
+public abstract class Nourriture {
     protected Case position;
     
     /**
