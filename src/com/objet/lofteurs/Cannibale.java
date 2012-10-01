@@ -9,6 +9,6 @@ package com.objet.lofteurs;
  * @author QSL
  */
 public class Cannibale {
-    private int trucaupif;
+    private int trucaupif2;
     
 }
