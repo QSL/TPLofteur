@@ -8,6 +8,6 @@ package com.objet.lofteurs;
  *
  * @author QSL
  */
-public class Kebab {
+public class Kebab extends Nourriture {
     
 }

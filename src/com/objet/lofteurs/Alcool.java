@@ -8,6 +8,6 @@ package com.objet.lofteurs;
  *
  * @author QSL
  */
-public class Alcool {
+public class Alcool extends Nourriture {
     
 }
