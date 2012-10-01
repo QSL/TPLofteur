@@ -9,6 +9,5 @@ package com.objet.lofteurs;
  * @author QSL
  */
 public class Alcool extends Nourriture {
-	private int test;
     
 }
