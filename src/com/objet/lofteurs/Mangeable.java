@@ -10,7 +10,8 @@ package com.objet.lofteurs;
  */
 public abstract class Mangeable {
     protected int valeurenergie;
-    public void setValeurEnergie(int valeurenergie) {
+    public void setValeurEnergie(int valeurenergie2) {
+        this.valeurenergie=valeurenergie2;
     	
     }
     public int getValeurEnergie() {
