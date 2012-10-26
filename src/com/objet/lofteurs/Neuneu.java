@@ -112,6 +112,8 @@ public class Neuneu extends Mangeable {
 	public Case chercheNourritureProche(){
 	float a =0;
         
+        
+        
         return nouvelleCasePossible;
         
             

@@ -86,4 +86,6 @@ public class Case {
     public void setLoftCorrespondant(Loft loft){
         this.loftCorrespondant=loft;
     }
+
+    
 }

@@ -20,4 +20,14 @@ public abstract class Mangeable {
     	return this.valeurEnergie;
     }
     
+    public int distance(Neuneu n){
+        int a=(this.position.abscisse-n.position.abscisse)+(this.position.ordonnee-n.position.ordonnee);
+        int b;
+        if (a<0){
+            b=-a;
+            }
+        else {b=a;}
+        return b;
+    }
+    
 }
