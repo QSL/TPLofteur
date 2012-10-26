@@ -4,8 +4,8 @@ public class Saison1 {
 
 	public static int nombreLofteurs = 4;
 	public static int tailleLoft = 30;
-	public static float proportionErratique = .75f;
-	public static float proportionVorace = .25f;
+	public static float proportionErratique = 1f;
+	public static float proportionVorace = 0f;
 	public static float proportionCannibale = 0f;
 	/**
 	 * @param args
@@ -23,7 +23,7 @@ public class Saison1 {
 		for (int i=0 ; i<nombreLofteurs ; i++) {
 			double x = Math.random();
 			if (x<proportionVorace) {
-				loft.add(new Vorace(loft,
+				loft.addNeuneu(new Vorace(loft,
 						(int)(Math.random()*29),
 						(int)(Math.random()*29),
 						3));

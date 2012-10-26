@@ -8,7 +8,7 @@ package com.objet.lofteurs;
  *
  * @author QSL
  */
-public class Vorace {
+public class Vorace extends Neuneu {
     public void cycleDeVie() {
     	
     }

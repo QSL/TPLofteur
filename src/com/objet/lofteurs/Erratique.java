@@ -8,8 +8,12 @@ package com.objet.lofteurs;
  *
  * @author QSL
  */
-public class Erratique {
+public class Erratique extends Neuneu {
     public void cycleDeVie() {
+        
+        if (!this.estExpulse){
+            this.seDeplacer(chercheCaseAleatoire());            
+        }
     	
     }
 }

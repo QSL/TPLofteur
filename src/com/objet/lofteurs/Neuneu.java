@@ -9,10 +9,8 @@ package com.objet.lofteurs;
  * @author QSL
  */
 public class Neuneu extends Mangeable {
-    protected Case position;
     protected boolean estExpulse;
     protected Nourriture[] nourriturePreferee;
-    protected Loft loft;
 	public boolean getEstExpulse() {
 		return estExpulse;
 	}
@@ -110,16 +108,31 @@ public class Neuneu extends Mangeable {
 	
         
 	public Case chercheNourritureProche(){
-	float a =0;
-        
-        
-        
-        return nouvelleCasePossible;
-        
+            //index de la recherche
+            int i;
             
-	}
-	public void chercheNeuneuProche() {
-		
-	}
-	
+            //on initialise la recherche
+            Mangeable nourritureProche=this.position.loftCorrespondant.alimentation[0];
+            
+            //on lance la recherche
+            for (i=0; i<this.position.loftCorrespondant.alimentation.size; i++){
+                if(this.position.loftCorrespondant.alimentation[i].distance(this)<nourritureProche.distance(this)){
+                    nourritureProche=this.position.loftCorrespondant.alimentation[i];                                        
+                }
+            }
+            return nourritureProche.position;    
+        }
+        
+	public Case chercheNeuneuProche() {
+            int i;
+            Mangeable neuneuProche=this.position.loftCorrespondant.population[0];
+            
+            for (i=0; i<this.position.loftCorrespondant.population.size; i++){
+                if(this.position.loftCorrespondant.population[i].distance(this)<neuneuProche.distance(this)){
+                    neuneuProche=this.position.loftCorrespondant.population[i];
+                }
+            }
+            return neuneuProche.position;
+        }
+        
 }

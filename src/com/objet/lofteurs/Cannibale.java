@@ -11,9 +11,9 @@ package com.objet.lofteurs;
 public class Cannibale extends Neuneu {
     protected static final float appetit;
     protected static final float reproduction;
-    public void cycleDeVie() {
-        if (this.valeurEnergie > 0){
-            
+    
+     
+    public void cycleDeVie() {              
         }
     	
     }
