@@ -4,8 +4,6 @@
  */
 package com.objet.lofteurs;
 
-import java.util.*;
-
 /*
  *
  * @author QSL
@@ -13,15 +11,16 @@ import java.util.*;
 public class Case {
     protected int abscisse;
     protected int ordonnee;
+    protected Loft loftCorrespondant;
     
     // méthode permettant de retourner la liste des neuneus qui sont sur la case
     public Neuneu[] getNeuneu(){
         Neuneu[] listeDeNeuneuSurLaCase = new Neuneu[];
-        for(int i=0; i<Loft.population.length; i++)
+        for(int i=0; i<this.loftCorrespondant.population.length; i++)
         {
-            if Loft.population[i].position=this
+            if this.loftCorrespondant.population[i].position=this
                     { 
-                        listeDeNeuneuSurLaCase.add(Loft.population[i]);
+                        listeDeNeuneuSurLaCase.add(this.loftCorrespondant.population[i]);
                     }
         }
         return listeDeNeuneuSurLaCase;
@@ -30,8 +29,15 @@ public class Case {
     
     // permet de retourner la nourriture sur la case
     // non implémentée car possiblement non utile
-    public Nourriture getNourriture(){
-        return null;
+    public Nourriture[] getNourriture(){
+        Nourriture[] nourritureSurLaCase = new Nourriture[];
+        for (int i=0; i<this.loftCorrespondant.population.length; i++) {
+            if this.loftCorrespondant.alimentation[i].position=this
+                    { 
+                        nourritureSurLaCase =  this.loftCorrespondant.alimentation[i].position;
+                    }
+        }
+        return nourritureSurLaCase;
         
     }
     

@@ -11,9 +11,11 @@ package com.objet.lofteurs;
 class Loft {
 
     protected Neuneu[] population;
+    protected Nourriture[] alimentation;
     protected int largeur;
     protected int hauteur;
     protected Case[][] listcases;
+    
     
     public Loft(int tailleLoft, ZoneGraphique zone) {
     }
@@ -55,5 +57,13 @@ class Loft {
     
     public void setListeCases(Case[] listeCase){
         
+    }
+    
+    public Nourriture[] getAlimentation(){
+        return this.alimentation;
+    }
+    
+    public void setAlimentation(Nourriture[] alimentation){
+        this.alimentation= alimentation;
     }
 }
