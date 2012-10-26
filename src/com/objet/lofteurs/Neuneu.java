@@ -8,7 +8,7 @@ package com.objet.lofteurs;
  *
  * @author QSL
  */
-public class Neuneu {
+public class Neuneu extends Mangeable {
     protected Case position;
     protected boolean estexpulse;
     protected Nourriture[] nourriturepreferee;

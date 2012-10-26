@@ -15,8 +15,8 @@ public class Case {
     protected int ordonnee;
     
     // méthode permettant de retourner la liste des neuneus qui sont sur la case
-    public List<Neuneu> getNeuneu(){
-        List<Neuneu> listeDeNeuneuSurLaCase = new ArrayList<>();
+    public Neuneu[] getNeuneu(){
+        Neuneu[] listeDeNeuneuSurLaCase = new Neuneu[];
         for(int i=0; i<Loft.population.length; i++)
         {
             if Loft.population[i].position=this

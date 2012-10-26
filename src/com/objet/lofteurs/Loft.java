@@ -31,6 +31,7 @@ class Loft {
     }
     
     public Case getContenuCase(){
+        return null;
         
     }
     
@@ -39,6 +40,7 @@ class Loft {
     }
     
     public Neuneu[] getPopulation(){
+        return null;
         
     }
     
@@ -47,6 +49,7 @@ class Loft {
     }
     
     public Case[][] getListCases(){
+        return null;
         
     }
     

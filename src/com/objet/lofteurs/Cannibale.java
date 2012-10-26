@@ -8,9 +8,13 @@ package com.objet.lofteurs;
  *
  * @author QSL
  */
-public class Cannibale {
-    protected float appetit;
+public class Cannibale extends Neuneu {
+    protected static final float appetit;
+    protected static final float reproduction;
     public void cycleDeVie() {
+        if (this.valeurEnergie > 0){
+            
+        }
     	
     }
 }
