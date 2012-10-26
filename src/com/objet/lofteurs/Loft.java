@@ -67,7 +67,7 @@ class Loft {
         this.alimentation= alimentation;
     }
 
-    boolean contains(Case nouvelleCasePossible) {
+    public boolean contient(Case nouvelleCasePossible) {
         //index de la recherche
         int i, j;
         
@@ -91,6 +91,8 @@ class Loft {
         }
                
         }
+
+   
         
     }
-}
+

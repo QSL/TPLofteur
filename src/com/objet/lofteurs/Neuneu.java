@@ -25,12 +25,7 @@ public class Neuneu extends Mangeable {
 	public void setNourriturepreferee(Nourriture[] nourriturepreferee) {
 		this.nourriturePreferee = nourriturepreferee;
 	}
-	public Loft getLoft() {
-		return loft;
-	}
-	public void setLoft(Loft loft) {
-		this.loft = loft;
-	}
+	
 	public void setPosition(Case position) {
 		this.position = position;
 	}
@@ -43,11 +38,11 @@ public class Neuneu extends Mangeable {
             this.position.setOrdonnee(nouvelleCase.ordonnee);
         }
         
-    @SuppressWarnings("empty-statement")
+   
 	public Case chercheCaseAleatoire() {
             // génération d'un nombre aléatoire pour choisir la case
             int aleatoire = (int) (Math.random() * (7));
-            Case nouvelleCasePossible;           
+            Case nouvelleCasePossible = null;           
             
             switch (aleatoire){
                 
@@ -91,31 +86,35 @@ public class Neuneu extends Mangeable {
                         nouvelleCasePossible.setAbscisse(this.position.abscisse-1);
                         nouvelleCasePossible.setOrdonnee(this.position.ordonnee);                        
                         break;
-                    
+                        
+            }                  
                                 
-                        // si la case existe on sort cette case
-                        if this.loft.contains(nouvelleCasePossible){
-                            return nouvelleCasePossible;
+                        // si la case n'existe pas on relance la méthode
+                        if(!this.position.loftCorrespondant.contient(nouvelleCasePossible)){
+                            this.chercheCaseAleatoire();
                         }
-                        // sinon on relance la méthode
-                        else { this.chercheCaseAleatoire();}
-                        
-                        
-            
-            }
+                                          
+        return nouvelleCasePossible;
 	}
+    
 	public Neuneu seReproduire(Neuneu Accouplement) {
 		Neuneu Neuneu_bebe = new Neuneu();;
 		return Neuneu_bebe;
 	}
-	public void manger() {
-		
+        
+	public void manger(Mangeable n) {
+            this.valeurEnergie=this.valeurEnergie+n.valeurEnergie;
+            n.position.removeNourriture(n);		
 	}
-	public void expulse() {
-		
-	}
-	public void chercheNourritureProche() {
-		
+        
+	
+        
+	public Case chercheNourritureProche(){
+	float a =0;
+        
+        return nouvelleCasePossible;
+        
+            
 	}
 	public void chercheNeuneuProche() {
 		
