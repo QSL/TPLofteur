@@ -66,4 +66,31 @@ class Loft {
     public void setAlimentation(Nourriture[] alimentation){
         this.alimentation= alimentation;
     }
+
+    boolean contains(Case nouvelleCasePossible) {
+        //index de la recherche
+        int i, j;
+        
+        //index pour le booleen
+        int k=0;
+        
+        for(i=0; i<this.listcases.length; i++){
+            for(j=0; j<this.listcases[i].length; j++){
+                if(this.listcases[i][j]==nouvelleCasePossible){
+                    k=k+1;
+                }                
+            }
+        }
+        
+        if(k==0){
+            return false;
+        }
+        
+        else{
+            return true;
+        }
+               
+        }
+        
+    }
 }

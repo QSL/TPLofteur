@@ -13,6 +13,22 @@ public class Case {
     protected int ordonnee;
     protected Loft loftCorrespondant;
     
+    public int getAbscisse() {
+        return this.abscisse;
+    }
+    
+    public void setAbscisse(int abscisse){
+        this.abscisse=abscisse;
+    }
+    
+    public int getOrdonnee(){
+        return this.ordonnee;
+        }
+    
+    public void setOrdonnee(int ordonnee){
+        this.ordonnee=ordonnee;
+    }
+    
     // méthode permettant de retourner la liste des neuneus qui sont sur la case
     public Neuneu[] getNeuneu(){
         Neuneu[] listeDeNeuneuSurLaCase = new Neuneu[];
@@ -61,5 +77,13 @@ public class Case {
     // non implémentée car possiblement non utile
     public void removeNourriture(Nourriture alimentation){
         
+    }
+    
+    public Loft getLoftCorrespondant(){
+        return this.loftCorrespondant;
+    }
+    
+    public void setLoftCorrespondant(Loft loft){
+        this.loftCorrespondant=loft;
     }
 }
