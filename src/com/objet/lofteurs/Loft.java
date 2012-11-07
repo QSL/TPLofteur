@@ -4,11 +4,13 @@
  */
 package com.objet.lofteurs;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author QSL
  */
-class Loft {
+class Loft implements ObjetDessinable {
 
     protected Neuneu[] population;
     protected Nourriture[] alimentation;
@@ -16,7 +18,9 @@ class Loft {
     protected int hauteur;
     protected Case[][] listcases;
     
-    
+    public void dessinerObjet(Graphics g) {
+    	
+    }
     public Loft(int tailleLoft, ZoneGraphique zone) {
     }
     
@@ -91,10 +95,11 @@ class Loft {
 
    
     public void go(){
-    while(this.population.size>1){
-    int i;
-    for (i=0; i<this.population.size; i++){
-        this.population[i].cycleDeVie();
+    while(this.population.length>1){
+	    int i;
+	    for (i=0; i<this.population.length; i++){
+	        this.population[i].cycleDeVie();
+	    }
     }
 }
         

@@ -9,7 +9,11 @@ package com.objet.lofteurs;
  * @author QSL
  */
 public class Erratique extends Neuneu {
-    public void cycleDeVie() {
+    public Erratique(Loft loft, int i, int j) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public void cycleDeVie() {
         
         if (!this.estExpulse){
             this.seDeplacer(chercheCaseAleatoire());            

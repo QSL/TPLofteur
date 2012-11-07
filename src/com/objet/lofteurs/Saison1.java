@@ -4,9 +4,10 @@ public class Saison1 {
 
 	public static int nombreLofteurs = 4;
 	public static int tailleLoft = 30;
-	public static float proportionErratique = 1f;
-	public static float proportionVorace = 0f;
-	public static float proportionCannibale = 0f;
+	public static float proportionErratique = 0.25f;
+	public static float proportionVorace = 0.25f;
+	public static float proportionCannibale = 0.25f;
+	public static float proportionLapin = 0.25f;
 	/**
 	 * @param args
 	 */
@@ -31,17 +32,23 @@ public class Saison1 {
 			else {
 				x -= proportionVorace;
 				if (x<proportionErratique) {
-					loft.add(new Erratique(loft,
+					loft.addNeuneu(new Erratique(loft,
 							(int)(Math.random()*29),
 							(int)(Math.random()*29)));
 				}
 				else {
 					x -= proportionErratique;
 					if (x<proportionCannibale) {
-						loft.add(new Cannibale(loft,
+						loft.addNeuneu(new Cannibale(loft,
 						(int)(Math.random()*29),
 						(int)(Math.random()*29),
 						5));
+					}
+					else {
+						loft.addNeuneu(new Lapin(loft,
+								(int)(Math.random()*29),
+								(int)(Math.random()*29),
+							5));
 					}
 				}
 			}

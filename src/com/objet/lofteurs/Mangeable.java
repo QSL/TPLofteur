@@ -19,7 +19,10 @@ public abstract class Mangeable {
     public int getValeurEnergie() {
     	return this.valeurEnergie;
     }
-    
+    public void setPosition(Case new_position)
+    {
+    	
+    }
     public int distance(Neuneu n){
         int a=(this.position.abscisse-n.position.abscisse)+(this.position.ordonnee-n.position.ordonnee);
         int b;

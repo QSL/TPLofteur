@@ -11,6 +11,9 @@ package com.objet.lofteurs;
 public class Neuneu extends Mangeable {
     protected boolean estExpulse;
     protected Nourriture[] nourriturePreferee;
+    public void cycleDeVie() {
+    	
+    }
 	public boolean getEstExpulse() {
 		return estExpulse;
 	}
@@ -115,7 +118,7 @@ public class Neuneu extends Mangeable {
             Mangeable nourritureProche=this.position.loftCorrespondant.alimentation[0];
             
             //on lance la recherche
-            for (i=0; i<this.position.loftCorrespondant.alimentation.size; i++){
+            for (i=0; i<this.position.loftCorrespondant.alimentation.length; i++){
                 if(this.position.loftCorrespondant.alimentation[i].distance(this)<nourritureProche.distance(this)){
                     nourritureProche=this.position.loftCorrespondant.alimentation[i];                                        
                 }
@@ -127,7 +130,7 @@ public class Neuneu extends Mangeable {
             int i;
             Mangeable neuneuProche=this.position.loftCorrespondant.population[0];
             
-            for (i=0; i<this.position.loftCorrespondant.population.size; i++){
+            for (i=0; i<this.position.loftCorrespondant.population.length; i++){
                 if(this.position.loftCorrespondant.population[i].distance(this)<neuneuProche.distance(this)){
                     neuneuProche=this.position.loftCorrespondant.population[i];
                 }

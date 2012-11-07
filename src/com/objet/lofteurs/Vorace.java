@@ -9,7 +9,11 @@ package com.objet.lofteurs;
  * @author QSL
  */
 public class Vorace extends Neuneu {
-    public void cycleDeVie() {
+	public Vorace(Loft loft, int i, int j, int k) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public void cycleDeVie() {
     	
     }
 }
