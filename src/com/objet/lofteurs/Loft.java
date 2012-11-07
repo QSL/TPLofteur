@@ -20,10 +20,7 @@ class Loft {
     public Loft(int tailleLoft, ZoneGraphique zone) {
     }
     
-    public void remplissageAleatoire(int nb_neuneu, int nb_nourr){
-        
-    }
-    
+       
     public void addNeuneu(Neuneu lofteur){
         
     }
@@ -101,5 +98,10 @@ class Loft {
     }
 }
         
+    
+
+    void remplissageAleatoire(float f) {
+       
     }
 
+    }
