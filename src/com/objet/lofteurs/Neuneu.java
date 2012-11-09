@@ -4,6 +4,8 @@
  */
 package com.objet.lofteurs;
 
+import java.awt.*;
+
 /**
  *
  * @author QSL
@@ -86,14 +88,13 @@ public class Neuneu extends Mangeable {
                     case 7:
                         nouvelleCasePossible.setAbscisse(this.position.abscisse-1);
                         nouvelleCasePossible.setOrdonnee(this.position.ordonnee);                        
-                        break;
-                        
+                        break;     
             }                  
                                 
-                        // si la case n'existe pas on relance la méthode
-                        if(!this.position.loftCorrespondant.contient(nouvelleCasePossible)){
-                            this.chercheCaseAleatoire();
-                        }
+        // si la case n'existe pas on relance la méthode
+        if(!this.position.loftCorrespondant.contient(nouvelleCasePossible)){
+            this.chercheCaseAleatoire();
+        }
                                           
         return nouvelleCasePossible;
 	}
@@ -102,10 +103,14 @@ public class Neuneu extends Mangeable {
 		Neuneu Neuneu_bebe = new Neuneu();;
 		return Neuneu_bebe;
 	}
-        
+    public void expulse() {
+    	this.estExpulse = true;
+    	this.valeurEnergie = 0;
+    	
+    }
 	public void manger(Mangeable n) {
             this.valeurEnergie=this.valeurEnergie+n.valeurEnergie;
-            n.position.removeNourriture(n);		
+            n.setValeurEnergie(0);	
 	}
         
 	
@@ -113,29 +118,56 @@ public class Neuneu extends Mangeable {
 	public Case chercheNourritureProche(){
             //index de la recherche
             int i;
-            
             //on initialise la recherche
-            Mangeable nourritureProche=this.position.loftCorrespondant.alimentation[0];
-            
+            System.out.print(this.position.getAbscisse());
+            System.out.print("test 1");            
+            System.out.print("salut !");
+            System.out.print(this.position.getLoftCorrespondant());
+            System.out.print("test 2");
+            System.out.print(this.position.getLoftCorrespondant().getAlimentation().size());
+
+            Mangeable nourritureProche = this.position.getLoftCorrespondant().getAlimentation().get(0);
             //on lance la recherche
-            for (i=0; i<this.position.loftCorrespondant.alimentation.length; i++){
-                if(this.position.loftCorrespondant.alimentation[i].distance(this)<nourritureProche.distance(this)){
-                    nourritureProche=this.position.loftCorrespondant.alimentation[i];                                        
+            System.out.print("salut !");
+            System.out.print(this.position.getLoftCorrespondant().getAlimentation().size());
+            for (i=0; i < 3; i++){
+                if(this.position.getLoftCorrespondant().getAlimentation().get(i).distance(this) < nourritureProche.distance(this)){
+                    nourritureProche=this.position.getLoftCorrespondant().getAlimentation().get(i);                                        
                 }
             }
             return nourritureProche.position;    
         }
         
 	public Case chercheNeuneuProche() {
-            int i;
-            Mangeable neuneuProche=this.position.loftCorrespondant.population[0];
-            
-            for (i=0; i<this.position.loftCorrespondant.population.length; i++){
-                if(this.position.loftCorrespondant.population[i].distance(this)<neuneuProche.distance(this)){
-                    neuneuProche=this.position.loftCorrespondant.population[i];
+            int i = 0;
+            Mangeable neuneuProche=this.position.loftCorrespondant.population.get(i);
+            System.out.print("Cherche neuneu !");
+            System.out.print(this.position.getLoftCorrespondant().getPopulation().size());
+            for (i=0; i< 3; i++){
+                if(this.position.loftCorrespondant.population.get(i).distance(this)<neuneuProche.distance(this)){
+                    neuneuProche=this.position.loftCorrespondant.population.get(i);
                 }
             }
-            return neuneuProche.position;
+            return neuneuProche.position;             
         }
+	public Case chercheMouvementCase(Case CaseObjectif) {
+		Case nouvelleCase = CaseObjectif;
+		int deplacement_X, deplacement_Y;
+		deplacement_X = CaseObjectif.abscisse - this.position.abscisse;
+        deplacement_Y = CaseObjectif.ordonnee - this.position.ordonnee;
+        if (deplacement_X > 0) deplacement_X = 1;
+        else if (deplacement_X < 0) deplacement_X = -1;
+        if (deplacement_Y > 0) deplacement_Y = 1;
+        else if (deplacement_Y < 0) deplacement_Y = -1;
+        nouvelleCase.setAbscisse(this.position.abscisse + deplacement_X);
+        nouvelleCase.setOrdonnee(this.position.ordonnee + deplacement_Y);
+		return nouvelleCase;
+	}
+	@Override
+	public void dessinerObjet(Graphics g) {
+		System.out.print("DEEESSINNE NEUNEU");
+		g.setColor(Color.red);
+        g.fillRoundRect(10, 10, 100, 100, 5, 5);
+	}
         
 }

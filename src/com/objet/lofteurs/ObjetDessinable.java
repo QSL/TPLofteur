@@ -17,6 +17,6 @@ public interface ObjetDessinable {
 	 * fonction de dessin ; à surcharger
 	 * @param g le contexte graphique
 	 */
-	public void dessinerObjet(Graphics g);
+public void dessinerObjet(Graphics g);
 
 }

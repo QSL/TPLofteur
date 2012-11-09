@@ -8,29 +8,27 @@ package com.objet.lofteurs;
  *
  * @author QSL
  */
-public abstract class Mangeable {
+public abstract class Mangeable implements ObjetDessinable {
     protected int valeurEnergie;
     protected Case position;
     
     public void setValeurEnergie(int valeurenergie2) {
         this.valeurEnergie=valeurenergie2;
-    	
     }
     public int getValeurEnergie() {
     	return this.valeurEnergie;
     }
     public void setPosition(Case new_position)
     {
-    	
+    	this.position = new_position;
     }
-    public int distance(Neuneu n){
-        int a=(this.position.abscisse-n.position.abscisse)+(this.position.ordonnee-n.position.ordonnee);
-        int b;
-        if (a<0){
-            b=-a;
-            }
-        else {b=a;}
-        return b;
+    public Case getPosition()
+    {
+    	return this.position;
+    }
+    public int distance(Mangeable n){
+        int a= (int) Math.round(Math.sqrt(((this.position.getAbscisse()-n.position.getAbscisse())^2)+(this.position.getOrdonnee()-n.position.getOrdonnee())^2));
+        return a;
     }
     
 }

@@ -4,16 +4,38 @@
  */
 package com.objet.lofteurs;
 
+import java.awt.Graphics;
 /**
  *
  * @author QSL
  */
 public class Vorace extends Neuneu {
-	public Vorace(Loft loft, int i, int j, int k) {
-		// TODO Auto-generated constructor stub
+	public Vorace(Loft loft, int i, int j, int k, Graphics Graph) {
+    	this.position = loft.getListCases()[i][j];
+    	this.estExpulse = false;
+    	this.valeurEnergie = 100;
+    	this.dessinerObjet(Graph);
 	}
 
 	public void cycleDeVie() {
-    	
+        if (!this.estExpulse){
+            this.seDeplacer(this.chercheMouvementCase(this.chercheNourritureProche()));
+            if (this.getPosition().getNourriture().size() > 0)
+            {
+            	//let's eat what's on it !
+            	for (int i = 0; i < this.getPosition().getNourriture().size(); i++)
+            	{
+            		this.manger(this.getPosition().getNourriture().get(i));
+            	}
+            }
+            if (this.getPosition().getNeuneu().size() > 0)
+            {
+            	//let's have sex !
+            	for (int i = 0; i < this.getPosition().getNeuneu().size(); i++)
+            	{
+            		this.seReproduire(this.getPosition().getNeuneu().get(i));
+            	}
+            }
+        }     	
     }
 }

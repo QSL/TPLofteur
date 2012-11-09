@@ -10,6 +10,6 @@ package com.objet.lofteurs;
  */
 public abstract class Nourriture extends Mangeable {
     
-    
+
     
 }

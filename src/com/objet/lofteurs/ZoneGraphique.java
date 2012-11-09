@@ -1,10 +1,11 @@
 package com.objet.lofteurs;
 
+import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.LinkedList;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 /**
  * une classe comportant une zone graphique dans laquelle on peut dessiner ;
@@ -37,7 +38,7 @@ public class ZoneGraphique extends JFrame {
 		
 		// création de la liste d'objets
 		liste = new LinkedList<ObjetDessinable>();
-		
+		setBackground(Color.blue);
 		// ajout d'un listener
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {

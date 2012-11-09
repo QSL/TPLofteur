@@ -4,10 +4,15 @@
  */
 package com.objet.lofteurs;
 
+import java.awt.Graphics;
+
 /**
  *
  * @author QSL
  */
 public class Alcool extends Nourriture {
-   
+	public void dessinerObjet(Graphics g) {
+		// TODO Auto-generated method stub
+		
+	}
 }

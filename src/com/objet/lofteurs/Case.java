@@ -13,6 +13,12 @@ public class Case {
     protected int ordonnee;
     protected Loft loftCorrespondant;
     
+    public Case(int x, int y, Loft loft)
+    {
+    	this.abscisse = x;
+    	this.ordonnee = y;
+    	this.loftCorrespondant = loft;
+    }
     public int getAbscisse() {
         return this.abscisse;
     }
@@ -32,11 +38,11 @@ public class Case {
     // méthode permettant de retourner la liste des neuneus qui sont sur la case
     public List<Neuneu> getNeuneu(){
     	List<Neuneu> listeDeNeuneuSurLaCase = new ArrayList<Neuneu>(); //new Neuneu[this.loftCorrespondant.population.length];
-        for(int i=0; i<this.loftCorrespondant.population.length; i++)
+        for(int i=0; i<this.loftCorrespondant.population.size(); i++)
         {
-            if (this.loftCorrespondant.population[i].position == this)
+            if (this.loftCorrespondant.population.get(i).position == this)
             { 
-                listeDeNeuneuSurLaCase.add(this.loftCorrespondant.population[i]);
+                listeDeNeuneuSurLaCase.add(this.loftCorrespondant.population.get(i));
             }
         }
         return listeDeNeuneuSurLaCase;
@@ -47,10 +53,10 @@ public class Case {
     // non implémentée car possiblement non utile
     public List<Nourriture> getNourriture(){
     	List<Nourriture> nourritureSurLaCase = new ArrayList<Nourriture>();
-        for (int i=0; i<this.loftCorrespondant.population.length; i++) {
-            if (this.loftCorrespondant.alimentation[i].position == this)
+        for (int i=0; i<this.loftCorrespondant.population.size(); i++) {
+            if (this.loftCorrespondant.alimentation.get(i).position == this)
                     { 
-                        nourritureSurLaCase.add(this.loftCorrespondant.alimentation[i]);
+                        nourritureSurLaCase.add(this.loftCorrespondant.alimentation.get(i));
                     }
         }
         return nourritureSurLaCase;
@@ -62,21 +68,23 @@ public class Case {
         n.setPosition(this);
     }
     
-    // enlever un Neuneu de la case
-    // non implémentée car possiblement non utile
-    public void removeNeuneu(Neuneu n){
-        
-    }
     
     // ajouter de la Nourriture sur la case
     public void addNourriture(Nourriture alimentation){
         alimentation.setPosition(this);
     }
     
-    // enlever de la Nourriture de la case
-    // non implémentée car possiblement non utile
-    public void removeNourriture(Mangeable alimentation){
-        
+    public void removeMangeable(Mangeable alimentation){
+    	List<Nourriture> alimentationLoft = new ArrayList<Nourriture>();
+    	alimentation.setValeurEnergie(0);
+    	alimentationLoft = this.getLoftCorrespondant().getAlimentation();
+    	for (int i = 0; i<= alimentationLoft.size() ; i++)
+    	{
+    		if (alimentationLoft.get(i) == alimentation)
+    		{
+    			alimentationLoft.remove(i);
+    		}
+    	}
     }
     
     public Loft getLoftCorrespondant(){
