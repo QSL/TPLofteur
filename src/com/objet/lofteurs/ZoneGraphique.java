@@ -55,7 +55,7 @@ public class ZoneGraphique extends JFrame {
 		getContentPane().add(a); 
 
 		this.setContentPane(a);   
-		this.setBackground(Color.RED);
+		this.setBackground(Color.WHITE);
 		setVisible(true);
 	}
 	

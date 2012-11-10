@@ -11,6 +11,7 @@ import java.awt.*;
  * @author QSL
  */
 public class Neuneu extends Mangeable {
+	protected static final int coutEnergieSexe = 50;
     protected boolean estExpulse;
     protected Nourriture[] nourriturePreferee;
     public void cycleDeVie() {
@@ -99,17 +100,18 @@ public class Neuneu extends Mangeable {
 	}
     
 	public Neuneu seReproduire(Neuneu Accouplement) {
-		Neuneu Neuneu_bebe = new Neuneu();;
-		return Neuneu_bebe;
+		if (this.valeurEnergie > this.coutEnergieSexe) {
+			this.valeurEnergie -= this.coutEnergieSexe;
+			Neuneu Neuneu_bebe = new Neuneu();
+			return Neuneu_bebe;
+		}
+		else return null;
 	}
-    public void expulse() {
-    	this.estExpulse = true;
-    	this.valeurEnergie = 0;
-    	
-    }
 	public void manger(Mangeable n) {
-            this.valeurEnergie=this.valeurEnergie+n.valeurEnergie;
-            n.setValeurEnergie(0);	
+		System.out.print("MANGEEER !");
+        this.valeurEnergie=this.valeurEnergie+n.valeurEnergie;
+        n.setValeurEnergie(0);	
+        this.getPosition().removeMangeable(n);
 	}
         
 	
@@ -121,7 +123,7 @@ public class Neuneu extends Mangeable {
 
             Mangeable nourritureProche = this.position.getLoftCorrespondant().getAlimentation().get(0);
             //on lance la recherche
-            for (i=0; i < 3; i++){
+            for (i=0; i < this.position.getLoftCorrespondant().getAlimentation().size() ; i++){
                 if(this.position.getLoftCorrespondant().getAlimentation().get(i).distance(this) < nourritureProche.distance(this)){
                     nourritureProche=this.position.getLoftCorrespondant().getAlimentation().get(i);                                        
                 }

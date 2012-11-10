@@ -115,6 +115,16 @@ class Loft implements ObjetDessinable {
                
         }
 
+    public void expulse(Neuneu neuneu_expulse) {
+    	neuneu_expulse.setEstexpulse(true);
+    	neuneu_expulse.setValeurEnergie(0);
+    	for (int i = 0 ; i < this.population.size() ; i++) {
+    		if (this.population.get(i) == neuneu_expulse) {
+    			System.out.print("EXPULSION NEUNEU NUMERO " + i);
+    			this.population.remove(i);
+    		}
+    	}
+    }
    
     public void go(int nombreTours){
     int tourActuel = 0;
@@ -127,23 +137,28 @@ class Loft implements ObjetDessinable {
 	    int i, k, j;
 	    try {
 		    for (i=0; i<this.population.size(); i++){
+		    	System.out.print("\n JOUEUR " + i + "\n");
+		    	System.out.print("Energ : " + this.population.get(i).getValeurEnergie());
+		    	System.out.print("Pos : " + this.population.get(i).getPosition().getAbscisse() + " ; " + this.population.get(i).getPosition().getOrdonnee());
+		    	System.out.print("\n");
+		        Thread.currentThread().sleep(200);
+		        this.gzone.repaint();
 		        this.population.get(i).cycleDeVie();
 		        for (j=0; j<this.population.size(); j++){
 			        if (this.population.get(j).getValeurEnergie() <= 0)
 			        {
-			        	this.population.get(j).expulse();
+			        	this.expulse(this.population.get(j));
 			        }
 		        }
-		        for (k=0; k < this.alimentation.size(); k++)
+		        /*for (k=0; k < this.alimentation.size(); k++)
 		        {
 		        	if (this.alimentation.get(k).getValeurEnergie() <= 0)
 		        	{
 		        		this.alimentation.get(k).getPosition().removeMangeable(this.alimentation.get(k));
 		        	}
-		        }
+		        }*/
 		    }
 	        Thread.currentThread().sleep(125);
-	        this.gzone.repaint();
 		    tourActuel++;
 	    }
 	    catch (Exception e) {

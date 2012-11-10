@@ -4,13 +4,13 @@ import java.awt.*;
 
 public class Saison1 {
 
-	public static int nombreLofteurs = 4;
+	public static int nombreLofteurs = 2;
 	public static int tailleLoft = 30;
 	public static final int nombreTours = 1000;
-	public static float proportionErratique = 0.25f;
-	public static float proportionVorace = 0.25f;
-	public static float proportionCannibale = 0.25f;
-	public static float proportionLapin = 0.25f;
+	public static float proportionErratique = 0;
+	public static float proportionVorace = 1;
+	public static float proportionCannibale = 0;
+	public static float proportionLapin = 0;
 	/**
 	 * @param args
 	 */
@@ -19,7 +19,7 @@ public class Saison1 {
 	}
 	
 	public void primeTime() {
-		float prop_nourriture = 0.01f;
+		float prop_nourriture = 0.06f;
 		int valeurEnergieNourriture = 50;
 		ZoneGraphique zone = new ZoneGraphique("Loft Story Sfeir Servais-Laval", tailleLoft, tailleLoft);
 		Loft loft = new Loft(tailleLoft,zone, prop_nourriture);
@@ -66,7 +66,7 @@ public class Saison1 {
 						//zone.ajouterObjet(new_cannibale);
 					}
 					else {
-						Lapin new_lapin = new Lapin (loft, (int)(Math.random() * tailleLoft), (int) (Math.random() * tailleLoft), 3);	
+						Lapin new_lapin = new Lapin (loft, (int)(Math.random() * tailleLoft), (int) (Math.random() * tailleLoft), 0.3f);	
 
 						loft.addNeuneu(new_lapin);
 						//zone.ajouterObjet(new_lapin);

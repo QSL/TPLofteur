@@ -38,11 +38,11 @@ public class Case {
     // méthode permettant de retourner la liste des neuneus qui sont sur la case
     public List<Neuneu> getNeuneu(){
     	List<Neuneu> listeDeNeuneuSurLaCase = new ArrayList<Neuneu>(); //new Neuneu[this.loftCorrespondant.population.length];
-        for(int i=0; i < this.loftCorrespondant.population.size(); i++)
+        for(int i=0; i < this.loftCorrespondant.getPopulation().size(); i++)
         {
-            if (this.loftCorrespondant.population.get(i).position == this)
+            if (this.loftCorrespondant.getPopulation().get(i).getPosition() == this)
             { 
-                listeDeNeuneuSurLaCase.add(this.loftCorrespondant.population.get(i));
+                listeDeNeuneuSurLaCase.add(this.loftCorrespondant.getPopulation().get(i));
             }
         }
         return listeDeNeuneuSurLaCase;
@@ -52,12 +52,14 @@ public class Case {
     // permet de retourner la nourriture sur la case
     // non implémentée car possiblement non utile
     public List<Nourriture> getNourriture(){
+    	System.out.print("get nourriture !");
     	List<Nourriture> nourritureSurLaCase = new ArrayList<Nourriture>();
-        for (int i=0; i < this.loftCorrespondant.population.size(); i++) {
-            if (this.loftCorrespondant.getAlimentation().get(i).getPosition() == this)
-                    { 
-                        nourritureSurLaCase.add(this.loftCorrespondant.getAlimentation().get(i));
-                    }
+        for (int i=0; i < this.loftCorrespondant.getAlimentation().size(); i++) {
+        	if (this.loftCorrespondant.getAlimentation().get(i).getPosition().getAbscisse() == this.getAbscisse() && this.loftCorrespondant.getAlimentation().get(i).getPosition().getOrdonnee() == this.getOrdonnee())
+            { 
+            	System.out.print("Nourriture OK !!");
+                nourritureSurLaCase.add(this.loftCorrespondant.getAlimentation().get(i));
+            }
         }
         return nourritureSurLaCase;
         
@@ -80,8 +82,9 @@ public class Case {
     	alimentationLoft = this.getLoftCorrespondant().getAlimentation();
     	for (int i = 0; i < alimentationLoft.size() ; i++)
     	{
-    		if (alimentationLoft.get(i) == alimentation)
+    		if (alimentationLoft.get(i).getPosition().getAbscisse() == alimentation.getPosition().getAbscisse() && alimentationLoft.get(i).getPosition().getOrdonnee() == alimentation.getPosition().getOrdonnee())
     		{
+    			System.out.print("\n REMOVE \n");
     			alimentationLoft.remove(i);
     		}
     	}

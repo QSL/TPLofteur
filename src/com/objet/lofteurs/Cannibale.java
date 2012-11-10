@@ -29,29 +29,36 @@ public class Cannibale extends Neuneu {
 	}
 
 	public void cycleDeVie() {    
+		System.out.print("Cannibale Cycle \n");
 		int distance_neuneu;
 		int distance_nourriture;
 		Case nouvelleCase;
         if (!this.estExpulse){
         	distance_neuneu = (int) Math.round(Math.sqrt(this.chercheNeuneuProche().abscisse^2 + this.chercheNeuneuProche().ordonnee^2));
+        	System.out.print("Distance neuneu : " + distance_neuneu);
         	distance_nourriture = (int) Math.round(Math.sqrt(this.chercheNourritureProche().abscisse^2 + this.chercheNeuneuProche().ordonnee^2));
+        	System.out.print("Distance nourriture " + distance_nourriture);
         	if (distance_neuneu <= distance_nourriture) nouvelleCase = this.chercheNeuneuProche();
         	else nouvelleCase = this.chercheNourritureProche();
-        			
+        	System.out.print("Nouvelle case : " + nouvelleCase.getAbscisse() + " ; " + nouvelleCase.getOrdonnee());
         	this.seDeplacer(this.chercheMouvementCase(nouvelleCase));
             if (this.getPosition().getNourriture().size() > 0)
             {
             	//let's eat what's on it !
+            	System.out.print("Nourriture !!");
             	for (int i = 0; i < this.getPosition().getNourriture().size(); i++)
             	{
+            		System.out.print("Cannibale MANGER !! \n");
             		this.manger(this.getPosition().getNourriture().get(i));
             	}
             }
+            System.out.print("Neuneu sur la case !!\n");
             if (this.getPosition().getNeuneu().size() > 0)
             {
             	//let's have sex !
             	for (int i = 0; i < this.getPosition().getNeuneu().size(); i++)
             	{
+            		System.out.print("Manger neuneu !!\n");
             		this.manger(this.getPosition().getNeuneu().get(i));
             	}
             }

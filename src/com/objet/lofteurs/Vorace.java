@@ -23,24 +23,27 @@ public class Vorace extends Neuneu {
 		g.fillRect(this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y);
 	}
 	public void cycleDeVie() {
+		System.out.print("Cycle de Vie Vorace !\n");
         if (!this.estExpulse){
+        	System.out.print("\nNouveau mouvement : " + this.chercheMouvementCase(this.chercheNourritureProche()).getAbscisse() + " ; " + this.chercheMouvementCase(this.chercheNourritureProche()).getOrdonnee());
             this.seDeplacer(this.chercheMouvementCase(this.chercheNourritureProche()));
             if (this.getPosition().getNourriture().size() > 0)
             {
             	//let's eat what's on it !
             	for (int i = 0; i < this.getPosition().getNourriture().size(); i++)
             	{
+            		System.out.print("MANGEER");
             		this.manger(this.getPosition().getNourriture().get(i));
             	}
             }
-            if (this.getPosition().getNeuneu().size() > 0)
+            /*if (this.getPosition().getNeuneu().size() > 0)
             {
             	//let's have sex !
             	for (int i = 0; i < this.getPosition().getNeuneu().size(); i++)
             	{
             		this.seReproduire(this.getPosition().getNeuneu().get(i));
             	}
-            }
+            }*/
         }     	
     }
 }
