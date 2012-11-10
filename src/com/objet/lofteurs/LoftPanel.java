@@ -1,41 +1,12 @@
 package com.objet.lofteurs;
-
+import java.awt.Color;
 import java.awt.Graphics;
-import java.util.LinkedList;
 
 import javax.swing.JPanel;
-
-/**
- * un panneau de dessin pour le loft
- * 
- * @author moreau
- *
- */
-class LoftPanel extends JPanel {
-	/**
-	 * référence sur la liste des objets à dessiner
-	 */
-	private LinkedList<ObjetDessinable> listeObjets;
-	
-	/**
-	 * constructeur
-	 * 
-	 * @param listeObjets référence sur la liste des objets (gérée par la ZoneGraphique)
-	 */
-	public LoftPanel(LinkedList<ObjetDessinable> listeObjets) {
-		this.listeObjets = listeObjets;
-	}
-	
-	/**
-	 * on redéfinit la méthode paint() : elle se contente d'appeler les méthodes
-	 * dessinerObjet() de la liste d'objets dessinables
-	 */
-	public void paintComponent(Graphics g) {
-		super.paintComponents(g);
-		
-		// on redessine tout
-		for (ObjetDessinable x : listeObjets) {
-			x.dessinerObjet(g);
-		}
-	}
+ 
+public class LoftPanel extends JPanel { 
+  public void paintComponent(Graphics g){
+    //Vous verrez cette phrase chaque fois que la m�thode sera invoqu�e
+    System.out.println("PAINT Loft Panel"); 
+  }               
 }

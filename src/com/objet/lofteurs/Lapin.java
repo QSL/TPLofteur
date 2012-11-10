@@ -4,6 +4,9 @@
  */
 package com.objet.lofteurs;
 
+import java.awt.Color;
+import java.awt.Graphics;
+
 /**
  *
  * @author QSL
@@ -36,4 +39,10 @@ public class Lapin extends Neuneu {
             }
         }   	
     }
+	public void dessinerObjet(Graphics g)
+	{
+		System.out.print("Dessiner un Lapin !");
+		g.setColor(Color.YELLOW);
+		g.drawRect(40, 40, 500, 500);
+	}
 }

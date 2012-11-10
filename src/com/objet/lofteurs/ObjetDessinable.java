@@ -17,6 +17,9 @@ public interface ObjetDessinable {
 	 * fonction de dessin ; à surcharger
 	 * @param g le contexte graphique
 	 */
+
+	public static final int UNITE_X = 40;
+	public static final int UNITE_Y = 40;
 public void dessinerObjet(Graphics g);
 
 }

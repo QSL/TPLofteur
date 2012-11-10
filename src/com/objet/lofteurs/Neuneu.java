@@ -165,9 +165,6 @@ public class Neuneu extends Mangeable {
 	}
 	@Override
 	public void dessinerObjet(Graphics g) {
-		System.out.print("DEEESSINNE NEUNEU");
-		g.setColor(Color.red);
-        g.fillRoundRect(10, 10, 100, 100, 5, 5);
 	}
         
 }

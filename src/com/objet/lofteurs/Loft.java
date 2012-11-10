@@ -4,8 +4,10 @@
  */
 package com.objet.lofteurs;
 
+import java.awt.Color;
 import java.awt.Graphics;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author QSL
@@ -17,9 +19,14 @@ class Loft implements ObjetDessinable {
     protected int largeur;
     protected int hauteur;
     protected Case[][] listcases;
-    
+    public void paintComponent(Graphics g)
+    {
+    	this.dessinerObjet(g);
+    }
     public void dessinerObjet(Graphics g) {
-    	
+    	System.out.print("DESSINE LOFT");
+    	g.setColor(Color.YELLOW);
+    	g.drawRect(0, 50, 50, 50);
     }
     public Loft(int tailleLoft, ZoneGraphique zone, float prop_nourriture) {
     	int valeurEnergieNourriture = 50;
@@ -109,7 +116,10 @@ class Loft implements ObjetDessinable {
     public void go(ZoneGraphique graphics_zone){
     while(this.population.size() > 1){
 	    int i, k, j;
-	    for (i=0; i<this.population.size(); i++){
+	    
+	    
+	    
+	    /*for (i=0; i<this.population.size(); i++){
 	        this.population.get(i).cycleDeVie();
 	        for (j=0; j<this.population.size(); j++){
 		        if (this.population.get(j).getValeurEnergie() <= 0)
@@ -127,7 +137,7 @@ class Loft implements ObjetDessinable {
 	        		this.alimentation.get(k).getPosition().removeMangeable(this.alimentation.get(k));
 	        	}
 	        }
-	    }
+	    }*/
     }
 }
         
