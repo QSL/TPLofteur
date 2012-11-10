@@ -19,14 +19,15 @@ class Loft implements ObjetDessinable {
     protected int largeur;
     protected int hauteur;
     protected Case[][] listcases;
+    protected ZoneGraphique gzone;
     public void paintComponent(Graphics g)
     {
-    	this.dessinerObjet(g);
+    	//this.dessinerObjet(g);
     }
-    public void dessinerObjet(Graphics g) {
-    	System.out.print("DESSINE LOFT");
-    	g.setColor(Color.YELLOW);
-    	g.drawRect(0, 50, 50, 50);
+    public final void dessinerObjet(final Graphics g) {
+        for (Neuneu neuneu : this.population) {
+            neuneu.dessinerObjet(g);
+        }
     }
     public Loft(int tailleLoft, ZoneGraphique zone, float prop_nourriture) {
     	int valeurEnergieNourriture = 50;
@@ -35,12 +36,12 @@ class Loft implements ObjetDessinable {
     	this.listcases = new Case[tailleLoft+1][tailleLoft+1];
     	this.largeur = tailleLoft;
     	this.hauteur = tailleLoft;
+    	this.gzone = zone;
     	for (int i = 0; i <= tailleLoft ; i++)
     	{
     		for (int j = 0 ; j <= tailleLoft ; j++)
     		{		
     			this.listcases[j][i] = new Case(j, i, this);
-    			if (prop_nourriture >= Math.random()) this.addNourriture(new Kebab(this.listcases[j][i], valeurEnergieNourriture));
     		}
     	}
     }
@@ -48,10 +49,12 @@ class Loft implements ObjetDessinable {
        
     public void addNeuneu(Neuneu lofteur){
         this.population.add(lofteur);
+        this.gzone.ajouterObjet(lofteur);
     }
     
     public void addNourriture(Nourriture Consommable){
         this.alimentation.add(Consommable);
+        this.gzone.ajouterObjet(Consommable);
     }
     
     public Case getContenuCase(){
@@ -113,31 +116,42 @@ class Loft implements ObjetDessinable {
         }
 
    
-    public void go(ZoneGraphique graphics_zone){
-    while(this.population.size() > 1){
+    public void go(int nombreTours){
+    int tourActuel = 0;
+    Lapin new_lapin = new Lapin (this, 1, 1, 3);	
+
+	this.addNeuneu(new_lapin);
+	gzone.ajouterObjet(new_lapin);    
+	
+    while(this.population.size() > 1 || tourActuel < nombreTours){
 	    int i, k, j;
-	    
-	    
-	    
-	    /*for (i=0; i<this.population.size(); i++){
-	        this.population.get(i).cycleDeVie();
-	        for (j=0; j<this.population.size(); j++){
-		        if (this.population.get(j).getValeurEnergie() <= 0)
-		        {
-		        	this.population.get(j).expulse();
+	    try {
+		    for (i=0; i<this.population.size(); i++){
+		        this.population.get(i).cycleDeVie();
+		        /*for (j=0; j<this.population.size(); j++){
+			        if (this.population.get(j).getValeurEnergie() <= 0)
+			        {
+			        	this.population.get(j).expulse();
+			        }
 		        }
-	        }
-	        for (k=0; k < this.alimentation.size(); k++)
-	        {
-	        	if (this.alimentation.get(k).getValeurEnergie() <= 0)
-	        	{
-	        		System.out.print("TEST ALIMENTATION :");
-	        		System.out.print(this.alimentation.size());
-	        		System.out.print(this.alimentation.get(k).getPosition());
-	        		this.alimentation.get(k).getPosition().removeMangeable(this.alimentation.get(k));
-	        	}
-	        }
-	    }*/
+		        for (k=0; k < this.alimentation.size(); k++)
+		        {
+		        	if (this.alimentation.get(k).getValeurEnergie() <= 0)
+		        	{
+		        		System.out.print("TEST ALIMENTATION :");
+		        		System.out.print(this.alimentation.size());
+		        		System.out.print(this.alimentation.get(k).getPosition());
+		        		this.alimentation.get(k).getPosition().removeMangeable(this.alimentation.get(k));
+		        	}
+		        }*/
+		    }
+	        Thread.currentThread().sleep(100);
+	        this.gzone.repaint();
+		    tourActuel++;
+	    }
+	    catch (Exception e) {
+	    	
+	    }
     }
 }
         

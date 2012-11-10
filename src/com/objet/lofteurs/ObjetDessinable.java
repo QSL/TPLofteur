@@ -18,8 +18,8 @@ public interface ObjetDessinable {
 	 * @param g le contexte graphique
 	 */
 
-	public static final int UNITE_X = 40;
-	public static final int UNITE_Y = 40;
+	public static final int UNITE_X = 10;
+	public static final int UNITE_Y = 10;
 public void dessinerObjet(Graphics g);
 
 }

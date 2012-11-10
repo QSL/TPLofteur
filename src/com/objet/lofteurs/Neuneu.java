@@ -45,56 +45,55 @@ public class Neuneu extends Mangeable {
 	public Case chercheCaseAleatoire() {
             // génération d'un nombre aléatoire pour choisir la case
             int aleatoire = (int) (Math.random() * (7));
-            Case nouvelleCasePossible = null;           
-            
+            Case nouvelleCasePossible = new Case(0, 0, this.position.getLoftCorrespondant());  
             switch (aleatoire){
                 
             
                     case 0:                         
-                        nouvelleCasePossible.setAbscisse(this.position.abscisse-1);
-                        nouvelleCasePossible.setOrdonnee(this.position.ordonnee-1);                        
+                        nouvelleCasePossible.setAbscisse(this.position.getAbscisse()-1);
+                        nouvelleCasePossible.setOrdonnee(this.position.getOrdonnee()-1);                        
                         break;
                         
                     case 1:
-                        nouvelleCasePossible.setAbscisse(this.position.abscisse);
-                        nouvelleCasePossible.setOrdonnee(this.position.ordonnee-1);                        
+                        nouvelleCasePossible.setAbscisse(this.position.getAbscisse());
+                        nouvelleCasePossible.setOrdonnee(this.position.getOrdonnee()-1);                        
                         break;
                         
                     case 2:
-                        nouvelleCasePossible.setAbscisse(this.position.abscisse+1);
-                        nouvelleCasePossible.setOrdonnee(this.position.ordonnee-1);                        
+                        nouvelleCasePossible.setAbscisse(this.position.getAbscisse()+1);
+                        nouvelleCasePossible.setOrdonnee(this.position.getOrdonnee()-1);                        
                         break;
                         
                     case 3:
-                        nouvelleCasePossible.setAbscisse(this.position.abscisse+1);
-                        nouvelleCasePossible.setOrdonnee(this.position.ordonnee);                        
+                        nouvelleCasePossible.setAbscisse(this.position.getAbscisse()+1);
+                        nouvelleCasePossible.setOrdonnee(this.position.getOrdonnee());                        
                         break;
                         
                     case 4:
-                        nouvelleCasePossible.setAbscisse(this.position.abscisse+1);
-                        nouvelleCasePossible.setOrdonnee(this.position.ordonnee+1);                        
+                        nouvelleCasePossible.setAbscisse(this.position.getAbscisse()+1);
+                        nouvelleCasePossible.setOrdonnee(this.position.getOrdonnee()+1);                        
                         break;
                         
                     case 5:
-                        nouvelleCasePossible.setAbscisse(this.position.abscisse);
-                        nouvelleCasePossible.setOrdonnee(this.position.ordonnee+1);                        
+                        nouvelleCasePossible.setAbscisse(this.position.getAbscisse());
+                        nouvelleCasePossible.setOrdonnee(this.position.getOrdonnee()+1);                        
                         break;
                         
                     case 6:
-                        nouvelleCasePossible.setAbscisse(this.position.abscisse-1);
-                        nouvelleCasePossible.setOrdonnee(this.position.ordonnee+1);                        
+                        nouvelleCasePossible.setAbscisse(this.position.getAbscisse()-1);
+                        nouvelleCasePossible.setOrdonnee(this.position.getOrdonnee()+1);                        
                         break;
                         
                     case 7:
-                        nouvelleCasePossible.setAbscisse(this.position.abscisse-1);
-                        nouvelleCasePossible.setOrdonnee(this.position.ordonnee);                        
+                        nouvelleCasePossible.setAbscisse(this.position.getAbscisse()-1);
+                        nouvelleCasePossible.setOrdonnee(this.position.getOrdonnee());                        
                         break;     
             }                  
                                 
         // si la case n'existe pas on relance la méthode
-        if(!this.position.loftCorrespondant.contient(nouvelleCasePossible)){
+        /*if(!this.position.loftCorrespondant.contient(nouvelleCasePossible)){
             this.chercheCaseAleatoire();
-        }
+        }*/
                                           
         return nouvelleCasePossible;
 	}
@@ -119,17 +118,9 @@ public class Neuneu extends Mangeable {
             //index de la recherche
             int i;
             //on initialise la recherche
-            System.out.print(this.position.getAbscisse());
-            System.out.print("test 1");            
-            System.out.print("salut !");
-            System.out.print(this.position.getLoftCorrespondant());
-            System.out.print("test 2");
-            System.out.print(this.position.getLoftCorrespondant().getAlimentation().size());
 
             Mangeable nourritureProche = this.position.getLoftCorrespondant().getAlimentation().get(0);
             //on lance la recherche
-            System.out.print("salut !");
-            System.out.print(this.position.getLoftCorrespondant().getAlimentation().size());
             for (i=0; i < 3; i++){
                 if(this.position.getLoftCorrespondant().getAlimentation().get(i).distance(this) < nourritureProche.distance(this)){
                     nourritureProche=this.position.getLoftCorrespondant().getAlimentation().get(i);                                        
@@ -141,7 +132,6 @@ public class Neuneu extends Mangeable {
 	public Case chercheNeuneuProche() {
             int i = 0;
             Mangeable neuneuProche=this.position.loftCorrespondant.population.get(i);
-            System.out.print("Cherche neuneu !");
             System.out.print(this.position.getLoftCorrespondant().getPopulation().size());
             for (i=0; i< 3; i++){
                 if(this.position.loftCorrespondant.population.get(i).distance(this)<neuneuProche.distance(this)){

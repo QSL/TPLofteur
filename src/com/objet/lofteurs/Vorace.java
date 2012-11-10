@@ -18,10 +18,9 @@ public class Vorace extends Neuneu {
 	}
 	public void dessinerObjet(Graphics g)
 	{
-		System.out.print("Vorace dessine" + this.getPosition().getAbscisse() * UNITE_X);
-		System.out.print("UNITE :" + UNITE_X);
 		g.setColor(Color.GREEN);
 		g.drawRect(this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y);
+		g.fillRect(this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y);
 	}
 	public void cycleDeVie() {
         if (!this.estExpulse){

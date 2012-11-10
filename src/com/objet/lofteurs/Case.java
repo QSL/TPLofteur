@@ -38,7 +38,7 @@ public class Case {
     // méthode permettant de retourner la liste des neuneus qui sont sur la case
     public List<Neuneu> getNeuneu(){
     	List<Neuneu> listeDeNeuneuSurLaCase = new ArrayList<Neuneu>(); //new Neuneu[this.loftCorrespondant.population.length];
-        for(int i=0; i<this.loftCorrespondant.population.size(); i++)
+        for(int i=0; i < this.loftCorrespondant.population.size(); i++)
         {
             if (this.loftCorrespondant.population.get(i).position == this)
             { 
@@ -53,10 +53,10 @@ public class Case {
     // non implémentée car possiblement non utile
     public List<Nourriture> getNourriture(){
     	List<Nourriture> nourritureSurLaCase = new ArrayList<Nourriture>();
-        for (int i=0; i<this.loftCorrespondant.population.size(); i++) {
-            if (this.loftCorrespondant.alimentation.get(i).position == this)
+        for (int i=0; i < this.loftCorrespondant.population.size(); i++) {
+            if (this.loftCorrespondant.getAlimentation().get(i).getPosition() == this)
                     { 
-                        nourritureSurLaCase.add(this.loftCorrespondant.alimentation.get(i));
+                        nourritureSurLaCase.add(this.loftCorrespondant.getAlimentation().get(i));
                     }
         }
         return nourritureSurLaCase;
@@ -78,7 +78,7 @@ public class Case {
     	List<Nourriture> alimentationLoft = new ArrayList<Nourriture>();
     	alimentation.setValeurEnergie(0);
     	alimentationLoft = this.getLoftCorrespondant().getAlimentation();
-    	for (int i = 0; i<= alimentationLoft.size() ; i++)
+    	for (int i = 0; i < alimentationLoft.size() ; i++)
     	{
     		if (alimentationLoft.get(i) == alimentation)
     		{

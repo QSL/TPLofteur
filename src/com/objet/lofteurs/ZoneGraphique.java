@@ -24,20 +24,21 @@ public class ZoneGraphique extends JFrame {
 	 * la liste d'objets √† dessiner
 	 */
 	LinkedList<ObjetDessinable> liste;
-	
+	public static final int UNITE_X = 20;
+	public static final int UNITE_Y = 20;
 	/**
 	 * constructeur
 	 *
 	 * @param titre le nom de l'application
 	 */
-	public ZoneGraphique(String titre)  {
+	public ZoneGraphique(String titre, int size_width, int size_height)  {
 		
 		
 		// appel au constructeur de base
 		super(titre);
 		
 		// ajout d'une taille par d√©faut
-		setSize(600,600);
+		setSize(size_width * UNITE_X /2,size_height * UNITE_Y /2);
 		
 		// cr√©ation de la liste d'objets
 		liste = new LinkedList<ObjetDessinable>();
@@ -72,16 +73,19 @@ public class ZoneGraphique extends JFrame {
 		return getContentPane().getWidth();
 	}
    public void paint(Graphics g) {
-       super.paint(g);
-       System.out.print("paint affichage ; ");
-      for( ObjetDessinable oD : liste) {
-    	  System.out.print("Dessiner objet boucle Zone Graphique");
-    	  System.out.print(oD.getClass().getName());
-         oD.dessinerObjet(g); // chaque objet graphique a une méthode dessinerObjet
-         this.repaint();
-      }
-      //this.getContentPane().repaint();
-      //this.repaint();
+	   try {
+	       super.paint(g);
+	      for( ObjetDessinable oD : liste) {
+	         oD.dessinerObjet(g); // chaque objet graphique a une méthode dessinerObjet
+	      }		  
+	        // Thread.currentThread().sleep(100);
+	        // this.repaint();	      
+	   }
+	   catch (Exception  e)
+	   {
+		   
+	   }
+
    }	
 	/**
 	 * hauteur de la partie dessinable

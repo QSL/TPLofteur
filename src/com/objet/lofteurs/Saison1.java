@@ -4,12 +4,13 @@ import java.awt.*;
 
 public class Saison1 {
 
-	public static int nombreLofteurs = 3;
+	public static int nombreLofteurs = 4;
 	public static int tailleLoft = 30;
-	public static float proportionErratique = 0;
-	public static float proportionVorace = 1;
-	public static float proportionCannibale = 0f;
-	public static float proportionLapin = 0;
+	public static final int nombreTours = 1000;
+	public static float proportionErratique = 0.25f;
+	public static float proportionVorace = 0.25f;
+	public static float proportionCannibale = 0.25f;
+	public static float proportionLapin = 0.25f;
 	/**
 	 * @param args
 	 */
@@ -18,46 +19,63 @@ public class Saison1 {
 	}
 	
 	public void primeTime() {
-		float prop_nourriture = 0.3f;
-		ZoneGraphique zone = new ZoneGraphique("Loft Story Sfeir Servais-Laval");
+		float prop_nourriture = 0.01f;
+		int valeurEnergieNourriture = 50;
+		ZoneGraphique zone = new ZoneGraphique("Loft Story Sfeir Servais-Laval", tailleLoft, tailleLoft);
 		Loft loft = new Loft(tailleLoft,zone, prop_nourriture);
 		zone.ajouterObjet(loft);
 		Neuneu nouveauNeuneu = new Neuneu();
-		for (int i=0 ; i<nombreLofteurs ; i++) {
+		//Add Food management
+
+    	for (int i = 0; i <= tailleLoft ; i++)
+    	{
+    		for (int j = 0 ; j <= tailleLoft ; j++)
+    		{		
+    			if (prop_nourriture >= Math.random()) {
+    				Kebab new_kebab = new Kebab(loft.getListCases()[j][i], valeurEnergieNourriture);
+    				loft.addNourriture(new_kebab);
+    				//zone.ajouterObjet(new_kebab);
+    			}
+    		}
+    	}
+		
+		for (int i=0 ; i<=nombreLofteurs ; i++) {
 			double x = Math.random();
 			if (x<proportionVorace) {
 				Vorace new_vorace = new Vorace(loft,
-						(int)(Math.random()*29),
-						(int)(Math.random()*29),
+						(int)(Math.random()*tailleLoft),
+						(int)(Math.random()*tailleLoft),
 						3);
-				System.out.print("Vorace !");
 				loft.addNeuneu(new_vorace);
-				zone.ajouterObjet(new_vorace);
+				//zone.ajouterObjet(new_vorace);
 			}
 			else {
 				x -= proportionVorace;
 				if (x<proportionErratique) {
-					nouveauNeuneu = new Erratique(loft,
-							(int)(Math.random()*29),
-							(int)(Math.random()*29));
-					System.out.print("MMMMmmm... ERRATIQUE !");
+					Erratique new_erratique = new Erratique(loft,(int)(Math.random()*tailleLoft),(int)(Math.random()*tailleLoft));
+					loft.addNeuneu(new_erratique);
+					//zone.ajouterObjet(new_erratique);
 					
 				}
 				else {
 					x -= proportionErratique;
 					if (x<proportionCannibale) {
-						nouveauNeuneu = new Cannibale(loft, (int)(Math.random() * 29), (int)(Math.random() * 29), 3);
-						System.out.print("CANNIBALE !\n");
+						Cannibale new_cannibale = new Cannibale(loft, (int)(Math.random() * tailleLoft), (int)(Math.random() * tailleLoft), 3);	
+
+						loft.addNeuneu(new_cannibale);
+						//zone.ajouterObjet(new_cannibale);
 					}
 					else {
-						nouveauNeuneu = new Lapin (loft, (int)(Math.random() * 29), (int) (Math.random() * 29), 3);
-						System.out.print("Chaud dla bite !");
+						Lapin new_lapin = new Lapin (loft, (int)(Math.random() * tailleLoft), (int) (Math.random() * tailleLoft), 3);	
+
+						loft.addNeuneu(new_lapin);
+						//zone.ajouterObjet(new_lapin);
 					}
 				}
 			}
 		}
 		
-		loft.go(zone);
+		loft.go(this.nombreTours);
 	}
 
 }
