@@ -38,7 +38,7 @@ public class ZoneGraphique extends JFrame {
 		super(titre);
 		
 		// ajout d'une taille par défaut
-		setSize(size_width * UNITE_X /2,size_height * UNITE_Y /2);
+		setSize(size_width * UNITE_X,size_height * UNITE_Y);
 		
 		// création de la liste d'objets
 		liste = new LinkedList<ObjetDessinable>();

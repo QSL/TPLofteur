@@ -128,7 +128,7 @@ class Loft implements ObjetDessinable {
 	    try {
 		    for (i=0; i<this.population.size(); i++){
 		        this.population.get(i).cycleDeVie();
-		        /*for (j=0; j<this.population.size(); j++){
+		        for (j=0; j<this.population.size(); j++){
 			        if (this.population.get(j).getValeurEnergie() <= 0)
 			        {
 			        	this.population.get(j).expulse();
@@ -138,14 +138,11 @@ class Loft implements ObjetDessinable {
 		        {
 		        	if (this.alimentation.get(k).getValeurEnergie() <= 0)
 		        	{
-		        		System.out.print("TEST ALIMENTATION :");
-		        		System.out.print(this.alimentation.size());
-		        		System.out.print(this.alimentation.get(k).getPosition());
 		        		this.alimentation.get(k).getPosition().removeMangeable(this.alimentation.get(k));
 		        	}
-		        }*/
+		        }
 		    }
-	        Thread.currentThread().sleep(100);
+	        Thread.currentThread().sleep(125);
 	        this.gzone.repaint();
 		    tourActuel++;
 	    }
