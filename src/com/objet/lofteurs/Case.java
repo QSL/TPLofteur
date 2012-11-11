@@ -40,7 +40,7 @@ public class Case {
     	List<Neuneu> listeDeNeuneuSurLaCase = new ArrayList<Neuneu>(); //new Neuneu[this.loftCorrespondant.population.length];
         for(int i=0; i < this.loftCorrespondant.getPopulation().size(); i++)
         {
-            if (this.loftCorrespondant.getPopulation().get(i).getPosition() == this)
+            if (this.loftCorrespondant.getPopulation().get(i).getPosition().getAbscisse() == this.getAbscisse() && this.loftCorrespondant.getPopulation().get(i).getPosition().getOrdonnee() == this.getOrdonnee())
             { 
                 listeDeNeuneuSurLaCase.add(this.loftCorrespondant.getPopulation().get(i));
             }

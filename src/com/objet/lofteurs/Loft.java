@@ -122,6 +122,15 @@ class Loft implements ObjetDessinable {
     		if (this.population.get(i) == neuneu_expulse) {
     			System.out.print("EXPULSION NEUNEU NUMERO " + i);
     			this.population.remove(i);
+    	    	for (int j = 0 ; j < this.getGzone().getListe().size(); j++)
+    	    	{
+    	    		//System.out.print("Boucle dans liste...\n" + this + " - \n" + this.getGzone().getListe().get(j));
+    	    		if (this.getGzone().getListe().get(j) == neuneu_expulse)
+    	    		{
+    	    			System.out.print("\nREMOVE FROM LIIIIST\n");
+    	    	    	this.getGzone().getListe().remove(j);
+    	    		}
+    	    	}
     		}
     	}
     }
@@ -129,7 +138,7 @@ class Loft implements ObjetDessinable {
     public void go(int nombreTours){
     int tourActuel = 0;
 	
-    while(this.population.size() > 1 || tourActuel < nombreTours){
+    while(this.population.size() > 1 && tourActuel < nombreTours){
 	    int i, k, j;
 	    try {
 		    for (i=0; i<this.population.size(); i++){
@@ -162,6 +171,11 @@ class Loft implements ObjetDessinable {
 	    	
 	    }
     }
+    //Game ended.
+    for (int kk=0; kk<this.population.size(); kk++){
+        	this.population.get(kk).setaGagne(true);
+    }    
+    this.gzone.repaint();
 }
         
     

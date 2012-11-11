@@ -19,13 +19,17 @@ public class Cannibale extends Neuneu {
     public Cannibale(Loft loft, int i, int j, int k) {
     	this.position = loft.getListCases()[i][j];
     	this.estExpulse = false;
-    	this.valeurEnergie = 100;  	
+    	this.valeurEnergie = 10;  	
 	}
 	public void dessinerObjet(Graphics g)
 	{
 		g.setColor(Color.RED);
 		g.drawRect(this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y);
 		g.fillRect(this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y);
+		if (this.aGagne)
+		{
+			g.drawString("Gagné !", this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y);
+		}
 	}
 
 	public void cycleDeVie() {
@@ -34,11 +38,12 @@ public class Cannibale extends Neuneu {
 		int distance_nourriture;
 		Case nouvelleCase;
         if (!this.estExpulse){
+    		this.setValeurEnergie(this.valeurEnergie - 2);
         	//System.out.print("Distaaance !! " + Math.round(Math.sqrt(this.chercheNeuneuProche().abscisse^2 + this.chercheNeuneuProche().ordonnee^2)));
         	distance_neuneu = (int) Math.round(Math.sqrt(this.chercheNeuneuProche().abscisse^2 + this.chercheNeuneuProche().ordonnee^2));
-        	//System.out.print("\nDistance neuneu : " + distance_neuneu);
+        	System.out.print("\nDistance neuneu : " + distance_neuneu);
         	distance_nourriture = (int) Math.round(Math.sqrt(this.chercheNourritureProche().abscisse^2 + this.chercheNeuneuProche().ordonnee^2));
-        	//System.out.print("\nDistance nourriture " + distance_nourriture);
+        	System.out.print("\nDistance nourriture " + distance_nourriture);
         	if (distance_neuneu <= distance_nourriture) nouvelleCase = this.chercheNeuneuProche();
         	else nouvelleCase = this.chercheNourritureProche();
         	//System.out.print("Nouvelle case : " + nouvelleCase.getAbscisse() + " ; " + nouvelleCase.getOrdonnee());
@@ -66,15 +71,9 @@ public class Cannibale extends Neuneu {
                 else
                 {
                     this.manger(this.getPosition().getNeuneu().get(1));
-                    System.out.print("Le Neuneu mange la nourriture sur la case \n");
+                    System.out.print("Le Neuneu mange un autre Neuneu !!! sur la case \n");
                     this.getPosition().getLoftCorrespondant().expulse(this.getPosition().getNeuneu().get(1));
                 }
-                
-                /*for (int i = 0; i < this.getPosition().getNeuneu().size(); i++)
-            	{
-            		System.out.print("Manger neuneu !!\n");
-            		this.manger(this.getPosition().getNeuneu().get(i));
-            	}*/
             }
         }  
             }

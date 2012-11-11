@@ -14,7 +14,8 @@ import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
  * @author QSL
  */
 public class Neuneu extends Mangeable {
-	protected static final int coutEnergieSexe = 50;
+	protected static final int coutEnergieSexe = 40;
+	protected boolean aGagne;
     protected boolean estExpulse;
     protected Nourriture[] nourriturePreferee;
     public void cycleDeVie() {
@@ -93,20 +94,20 @@ public class Neuneu extends Mangeable {
             }                  
                                 
         // si la case n'existe pas on relance la méthode
-        if(nouvelleCasePossible.getAbscisse()<0 || nouvelleCasePossible.getAbscisse()> nouvelleCasePossible.getLoftCorrespondant().hauteur || nouvelleCasePossible.getOrdonnee() < 0 || nouvelleCasePossible.getOrdonnee()>nouvelleCasePossible.getLoftCorrespondant().largeur ){
-            this.chercheCaseAleatoire();
-        }
-                                          
+        while (nouvelleCasePossible.getAbscisse()<0 || nouvelleCasePossible.getAbscisse()> nouvelleCasePossible.getLoftCorrespondant().hauteur || nouvelleCasePossible.getOrdonnee() < 0 || nouvelleCasePossible.getOrdonnee()>nouvelleCasePossible.getLoftCorrespondant().largeur ){
+            nouvelleCasePossible = this.chercheCaseAleatoire();
+        }                                
         return nouvelleCasePossible;
 	}
     
 	public Neuneu seReproduire(Neuneu Accouplement) {
-		if (this.valeurEnergie > this.coutEnergieSexe) {
-			this.valeurEnergie -= this.coutEnergieSexe;
-			Neuneu Neuneu_bebe = new Neuneu();
-			return Neuneu_bebe;
-		}
-		else return null;
+		this.valeurEnergie -= this.coutEnergieSexe;
+		Vorace Neuneu_bebe = new Vorace(this.position.getLoftCorrespondant(),
+				(int)(this.position.getAbscisse() + 1),
+				(int)(this.position.getOrdonnee() + 1),
+				3);
+		this.position.getLoftCorrespondant().addNeuneu(Neuneu_bebe);
+		return Neuneu_bebe;
 	}
 	public void manger(Mangeable n) {
 		int nindex = 0;
@@ -121,11 +122,10 @@ public class Neuneu extends Mangeable {
             //index de la recherche
             int i;
             //on initialise la recherche
-
             Mangeable nourritureProche = this.position.getLoftCorrespondant().getAlimentation().get(0);
             //on lance la recherche
             for (i=0; i < this.position.getLoftCorrespondant().getAlimentation().size() ; i++){
-                if(this.position.getLoftCorrespondant().getAlimentation().get(i).distance(this) < nourritureProche.distance(this)){
+            	if(this.position.getLoftCorrespondant().getAlimentation().get(i).distance(this) < nourritureProche.distance(this)){
                 	nourritureProche = this.position.getLoftCorrespondant().getAlimentation().get(i);                                        
                 }
                 else {}
@@ -195,6 +195,18 @@ public class Neuneu extends Mangeable {
 	}
 	@Override
 	public void dessinerObjet(Graphics g) {
+	}
+	public boolean isaGagne() {
+		return aGagne;
+	}
+	public void setaGagne(boolean aGagne) {
+		this.aGagne = aGagne;
+	}
+	public Nourriture[] getNourriturePreferee() {
+		return nourriturePreferee;
+	}
+	public void setNourriturePreferee(Nourriture[] nourriturePreferee) {
+		this.nourriturePreferee = nourriturePreferee;
 	}
         
 }
