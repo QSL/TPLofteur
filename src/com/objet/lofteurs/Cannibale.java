@@ -23,7 +23,7 @@ public class Cannibale extends Neuneu {
 	}
 	public void dessinerObjet(Graphics g)
 	{
-		g.setColor(Color.PINK);
+		g.setColor(Color.RED);
 		g.drawRect(this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y);
 		g.fillRect(this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y);
 	}
@@ -54,14 +54,24 @@ public class Cannibale extends Neuneu {
             	}
             }
             System.out.print("Neuneu sur la case !!\n");
-            if (this.getPosition().getNeuneu().size() > 0)
+            if (this.getPosition().getNeuneu().size() > 1)
             {
-            	//let's have sex !
-            	for (int i = 0; i < this.getPosition().getNeuneu().size(); i++)
+            	//let's eat the other neuneu
+            	if (this == this.getPosition().getNeuneu().get(1)){
+                    this.manger(this.getPosition().getNeuneu().get(2));
+                }
+                
+                else
+                {
+                    this.manger(this.getPosition().getNeuneu().get(1));
+                    this.getPosition().getLoftCorrespondant().expulse(this.getPosition().getNeuneu().get(1));
+                }
+                
+                /*for (int i = 0; i < this.getPosition().getNeuneu().size(); i++)
             	{
             		System.out.print("Manger neuneu !!\n");
             		this.manger(this.getPosition().getNeuneu().get(i));
-            	}
+            	}*/
             }
         }  
     }

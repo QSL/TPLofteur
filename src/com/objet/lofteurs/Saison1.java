@@ -4,13 +4,13 @@ import java.awt.*;
 
 public class Saison1 {
 
-	public static int nombreLofteurs = 4;
-	public static int tailleLoft = 30;
+	public static int nombreLofteurs = 2;
+	public static int tailleLoft = 20;
 	public static final int nombreTours = 1000;
-	public static float proportionErratique = 0;
-	public static float proportionVorace = 0;
-	public static float proportionCannibale = 1;
-	public static float proportionLapin = 0;
+	public static double proportionErratique = 0;
+	public static double proportionVorace = 0;
+	public static double proportionCannibale = 1;
+	public static double proportionLapin = 0;
 	/**
 	 * @param args
 	 */

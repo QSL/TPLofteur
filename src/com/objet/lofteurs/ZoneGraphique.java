@@ -24,8 +24,8 @@ public class ZoneGraphique extends JFrame {
 	 * la liste d'objets Ã  dessiner
 	 */
 	LinkedList<ObjetDessinable> liste;
-	public static final int UNITE_X = 20;
-	public static final int UNITE_Y = 20;
+	public static final int UNITE_X = 10;
+	public static final int UNITE_Y = 10;
 	/**
 	 * constructeur
 	 *
@@ -76,7 +76,7 @@ public class ZoneGraphique extends JFrame {
 	   try {
 	       super.paint(g);
 	      for( ObjetDessinable oD : liste) {
-	         oD.dessinerObjet(g); // chaque objet graphique a une mŽthode dessinerObjet
+	         oD.dessinerObjet(g); // chaque objet graphique a une mï¿½thode dessinerObjet
 	      }		  
 	        // Thread.currentThread().sleep(100);
 	        // this.repaint();	      

@@ -6,8 +6,8 @@ import javax.swing.JPanel;
  
 public class Panneau extends JPanel { 
   public void paintComponent(Graphics g){
-    //Vous verrez cette phrase chaque fois que la méthode sera invoquée
-    System.out.println("Je suis exécutée !"); 
+    //Vous verrez cette phrase chaque fois que la mï¿½thode sera invoquï¿½e
+    System.out.println("Je suis exï¿½cutï¿½e !"); 
     g.setColor(Color.WHITE);
     g.fillRect(0,  0,  this.getWidth() + 500,  this.getHeight() + 500);
     g.setColor(Color.GREEN);

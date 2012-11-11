@@ -116,7 +116,7 @@ class Loft implements ObjetDessinable {
         }
 
     public void expulse(Neuneu neuneu_expulse) {
-    	neuneu_expulse.setEstexpulse(true);
+    	neuneu_expulse.setEstExpulse(true);
     	neuneu_expulse.setValeurEnergie(0);
     	for (int i = 0 ; i < this.population.size() ; i++) {
     		if (this.population.get(i) == neuneu_expulse) {

@@ -23,7 +23,7 @@ public class Neuneu extends Mangeable {
 	public boolean getEstExpulse() {
 		return estExpulse;
 	}
-	public void setEstexpulse(boolean estexpulse) {
+	public void setEstExpulse(boolean estexpulse) {
 		this.estExpulse = estexpulse;
 	}
 	public Nourriture[] getNourriturepreferee() {
@@ -129,6 +129,7 @@ public class Neuneu extends Mangeable {
                 if(this.position.getLoftCorrespondant().getAlimentation().get(i).distance(this) < nourritureProche.distance(this)){
                 	nourritureProche = this.position.getLoftCorrespondant().getAlimentation().get(i);                                        
                 }
+                else {}
             }
             return nourritureProche.position;    
         }
@@ -136,9 +137,33 @@ public class Neuneu extends Mangeable {
 	public Case chercheNeuneuProche() {
             int i = 0;
             System.out.print("cherche Neuneu proche \n");
-            Case PositionNeuneuProche = null;
-            double short_distance = 999999;
-            for (i=0; i< this.position.getLoftCorrespondant().getPopulation().size(); i++){
+            Neuneu NeuneuProche = null;
+            
+            if (this.position.getLoftCorrespondant().getPopulation().get(0) == this)
+            {
+                NeuneuProche = this.position.getLoftCorrespondant().getPopulation().get(1);
+            }
+            else
+            {
+                NeuneuProche = this.position.getLoftCorrespondant().getPopulation().get(0);
+            }
+            
+            for(i=0; i<this.position.getLoftCorrespondant().getPopulation().size(); i++){
+                if (this.position.getLoftCorrespondant().getPopulation().get(i) == this) {}
+                else
+                {
+                    if (this.distance(this.position.getLoftCorrespondant().getPopulation().get(i)) < this.distance(NeuneuProche))
+                    {
+                        NeuneuProche = this.position.getLoftCorrespondant().getPopulation().get(i);                        
+                    }
+                }
+                
+            
+            }
+            
+            return NeuneuProche.getPosition();
+        }  
+            /*for (i=0; i< this.position.getLoftCorrespondant().getPopulation().size(); i++){
             	if (this.position.getLoftCorrespondant().getPopulation().get(i) != (this)) {	
 	            	System.out.print("Compare " + this.position.getLoftCorrespondant().getPopulation().get(i).distance(this) + " et " + short_distance);
 	                if(this.position.getLoftCorrespondant().getPopulation().get(i).distance(this) < short_distance){
@@ -151,18 +176,22 @@ public class Neuneu extends Mangeable {
             System.out.print("DIstance finale : " + short_distance + "\n");
             System.out.print("Neuneu final : "+ PositionNeuneuProche);
             return PositionNeuneuProche;             
-        }
+        }*/
+            
 	public Case chercheMouvementCase(Case CaseObjectif) {
 		Case nouvelleCase = new Case(0, 0, null);
 		int deplacement_X, deplacement_Y;
+                int deplacement_effectif_X = 0, deplacement_effectif_Y = 0;
 		deplacement_X = CaseObjectif.getAbscisse() - this.position.getAbscisse();
         deplacement_Y = CaseObjectif.getOrdonnee() - this.position.getOrdonnee();
-        if (deplacement_X > 0) deplacement_X = 1;
-        else if (deplacement_X < 0) deplacement_X = -1;
-        if (deplacement_Y > 0) deplacement_Y = 1;
-        else if (deplacement_Y < 0) deplacement_Y = -1;
-        nouvelleCase.setAbscisse(this.position.getAbscisse() + deplacement_X);
-        nouvelleCase.setOrdonnee(this.position.getOrdonnee() + deplacement_Y);
+        if (deplacement_X > 0) deplacement_effectif_X = 1;
+        else if (deplacement_X < 0) deplacement_effectif_X = -1;
+        else if (deplacement_X == 0) deplacement_effectif_X = 0;
+        if (deplacement_Y > 0) deplacement_effectif_Y = 1;
+        else if (deplacement_Y < 0) deplacement_effectif_Y = -1;
+        else if (deplacement_Y == 0) deplacement_effectif_Y = 0;
+        nouvelleCase.setAbscisse(this.position.getAbscisse() + deplacement_effectif_X);
+        nouvelleCase.setOrdonnee(this.position.getOrdonnee() + deplacement_effectif_Y);
 		return nouvelleCase;
 	}
 	@Override
