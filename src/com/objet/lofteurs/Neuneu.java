@@ -95,9 +95,9 @@ public class Neuneu extends Mangeable {
             }                  
                                 
         // si la case n'existe pas on relance la méthode
-        /*if(!this.position.loftCorrespondant.contient(nouvelleCasePossible)){
+        if(nouvelleCasePossible.getAbscisse()<0 || nouvelleCasePossible.getAbscisse()> nouvelleCasePossible.getLoftCorrespondant().hauteur || nouvelleCasePossible.getOrdonnee() < 0 || nouvelleCasePossible.getOrdonnee()>nouvelleCasePossible.getLoftCorrespondant().largeur ){
             this.chercheCaseAleatoire();
-        }*/
+        }
                                           
         return nouvelleCasePossible;
 	}
