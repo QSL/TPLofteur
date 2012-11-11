@@ -149,8 +149,6 @@ class Loft implements ObjetDessinable {
 		        }
 		        for (k=0; k < this.alimentation.size(); k++)
 		        {
-		        	System.out.print("Alimentation L2  : " + k);
-		        	System.out.print(this.alimentation.get(k).position.getAbscisse() + " ; " + this.alimentation.get(k).position.getOrdonnee());
 		        	if (this.alimentation.get(k).getValeurEnergie() <= 0)
 		        	{
 		        		this.alimentation.get(k).getPosition().removeMangeable(this.alimentation.get(k));

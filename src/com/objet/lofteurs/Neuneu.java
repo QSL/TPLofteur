@@ -49,10 +49,8 @@ public class Neuneu extends Mangeable {
 	public Case chercheCaseAleatoire() {
             // génération d'un nombre aléatoire pour choisir la case
             int aleatoire = (int) (Math.random() * (7));
-            Case nouvelleCasePossible = new Case(0, 0, this.position.getLoftCorrespondant());  
-            switch (aleatoire){
-                
-            
+            Case nouvelleCasePossible = new Case(-50, -50, this.position.getLoftCorrespondant());  
+            switch (aleatoire){    
                     case 0:                         
                         nouvelleCasePossible.setAbscisse(this.position.getAbscisse()-1);
                         nouvelleCasePossible.setOrdonnee(this.position.getOrdonnee()-1);                        
@@ -137,14 +135,22 @@ public class Neuneu extends Mangeable {
         
 	public Case chercheNeuneuProche() {
             int i = 0;
-            Mangeable neuneuProche=this.position.loftCorrespondant.population.get(i);
-            System.out.print(this.position.getLoftCorrespondant().getPopulation().size());
-            for (i=0; i< 3; i++){
-                if(this.position.loftCorrespondant.population.get(i).distance(this)<neuneuProche.distance(this)){
-                    neuneuProche=this.position.loftCorrespondant.population.get(i);
-                }
+            System.out.print("cherche Neuneu proche \n");
+            Case PositionNeuneuProche = null;
+            double short_distance = 999999;
+            for (i=0; i< this.position.getLoftCorrespondant().getPopulation().size(); i++){
+            	if (this.position.getLoftCorrespondant().getPopulation().get(i) != (this)) {	
+	            	System.out.print("Compare " + this.position.getLoftCorrespondant().getPopulation().get(i).distance(this) + " et " + short_distance);
+	                if(this.position.getLoftCorrespondant().getPopulation().get(i).distance(this) < short_distance){
+	                	short_distance = this.position.getLoftCorrespondant().getPopulation().get(i).distance(this);
+	                    PositionNeuneuProche = this.position.getLoftCorrespondant().getPopulation().get(i).getPosition();
+	                }
+            	}
+            	else PositionNeuneuProche = this.position.getLoftCorrespondant().getPopulation().get(i).getPosition();
             }
-            return neuneuProche.position;             
+            System.out.print("DIstance finale : " + short_distance + "\n");
+            System.out.print("Neuneu final : "+ PositionNeuneuProche);
+            return PositionNeuneuProche;             
         }
 	public Case chercheMouvementCase(Case CaseObjectif) {
 		Case nouvelleCase = new Case(0, 0, null);

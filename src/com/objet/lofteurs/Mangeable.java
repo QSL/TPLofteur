@@ -26,8 +26,10 @@ public abstract class Mangeable implements ObjetDessinable {
     {
     	return this.position;
     }
-    public int distance(Mangeable n){
-        int a= (int) Math.round(Math.sqrt(((this.position.getAbscisse()-n.position.getAbscisse())^2)+(this.position.getOrdonnee()-n.position.getOrdonnee())^2));
+    public double distance(Mangeable n){
+    	System.out.print("\n Distance calcul : " + Math.round(Math.sqrt(((this.position.getAbscisse()-n.position.getAbscisse())^2)+(this.position.getOrdonnee()-n.position.getOrdonnee())^2)));
+    	System.out.print("Calcul détail : math.sqrt(" + this.position.getAbscisse()+ "-" + n.position.getAbscisse() + ") + (" + this.position.getOrdonnee() + "-" + n.position.getOrdonnee());
+        double a= (double) Math.round(Math.sqrt(((this.position.getAbscisse()-n.position.getAbscisse())^2)+(this.position.getOrdonnee()-n.position.getOrdonnee())^2));
         return a;
     }
     

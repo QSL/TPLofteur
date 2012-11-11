@@ -4,12 +4,12 @@ import java.awt.*;
 
 public class Saison1 {
 
-	public static int nombreLofteurs = 3;
+	public static int nombreLofteurs = 4;
 	public static int tailleLoft = 30;
 	public static final int nombreTours = 1000;
 	public static float proportionErratique = 0;
-	public static float proportionVorace = 1;
-	public static float proportionCannibale = 0;
+	public static float proportionVorace = 0;
+	public static float proportionCannibale = 1;
 	public static float proportionLapin = 0;
 	/**
 	 * @param args
@@ -34,7 +34,6 @@ public class Saison1 {
     			if (prop_nourriture >= Math.random()) {
     				Kebab new_kebab = new Kebab(loft.getListCases()[j][i], valeurEnergieNourriture);
     				loft.addNourriture(new_kebab);
-    				//zone.ajouterObjet(new_kebab);
     			}
     		}
     	}
@@ -61,13 +60,11 @@ public class Saison1 {
 						Cannibale new_cannibale = new Cannibale(loft, (int)(Math.random() * tailleLoft), (int)(Math.random() * tailleLoft), 3);	
 
 						loft.addNeuneu(new_cannibale);
-						//zone.ajouterObjet(new_cannibale);
 					}
 					else {
 						Lapin new_lapin = new Lapin (loft, (int)(Math.random() * tailleLoft), (int) (Math.random() * tailleLoft), 0.3f);	
 
 						loft.addNeuneu(new_lapin);
-						//zone.ajouterObjet(new_lapin);
 					}
 				}
 			}

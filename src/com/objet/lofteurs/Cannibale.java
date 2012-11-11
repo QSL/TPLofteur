@@ -28,16 +28,17 @@ public class Cannibale extends Neuneu {
 		g.fillRect(this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y);
 	}
 
-	public void cycleDeVie() {    
+	public void cycleDeVie() {
 		System.out.print("Cannibale Cycle \n");
 		int distance_neuneu;
 		int distance_nourriture;
 		Case nouvelleCase;
         if (!this.estExpulse){
+        	System.out.print("Distaaance !! " + Math.round(Math.sqrt(this.chercheNeuneuProche().abscisse^2 + this.chercheNeuneuProche().ordonnee^2)));
         	distance_neuneu = (int) Math.round(Math.sqrt(this.chercheNeuneuProche().abscisse^2 + this.chercheNeuneuProche().ordonnee^2));
-        	System.out.print("Distance neuneu : " + distance_neuneu);
+        	System.out.print("\nDistance neuneu : " + distance_neuneu);
         	distance_nourriture = (int) Math.round(Math.sqrt(this.chercheNourritureProche().abscisse^2 + this.chercheNeuneuProche().ordonnee^2));
-        	System.out.print("Distance nourriture " + distance_nourriture);
+        	System.out.print("\nDistance nourriture " + distance_nourriture);
         	if (distance_neuneu <= distance_nourriture) nouvelleCase = this.chercheNeuneuProche();
         	else nouvelleCase = this.chercheNourritureProche();
         	System.out.print("Nouvelle case : " + nouvelleCase.getAbscisse() + " ; " + nouvelleCase.getOrdonnee());
