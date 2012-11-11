@@ -146,7 +146,7 @@ class Loft implements ObjetDessinable {
 		    	System.out.print("Energ : " + this.population.get(i).getValeurEnergie());
 		    	System.out.print("Pos : " + this.population.get(i).getPosition().getAbscisse() + " ; " + this.population.get(i).getPosition().getOrdonnee());
 		    	System.out.print("\n");
-		        Thread.currentThread().sleep(200);
+		        Thread.currentThread().sleep(100);
 		        this.gzone.repaint();
 		        this.population.get(i).cycleDeVie();
 		        

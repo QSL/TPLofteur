@@ -6,6 +6,7 @@ package com.objet.lofteurs;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 
 /**
  *
@@ -21,7 +22,9 @@ public class Kebab extends Nourriture {
 	public void dessinerObjet(Graphics g)
 	{
 		g.setColor(Color.MAGENTA);
-		g.drawRect(this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y);
-		g.fillRect(this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y);
+		Image image_kebab = this.position.getLoftCorrespondant().getGzone().getToolkit().getImage("files/kebab.png");
+		g.drawImage(image_kebab, this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y, null);
+		//g.drawRect(this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y);
+		//g.fillRect(this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y);
 	}
 }

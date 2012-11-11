@@ -6,6 +6,7 @@ package com.objet.lofteurs;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 /**
  *
  * @author QSL
@@ -19,8 +20,8 @@ public class Vorace extends Neuneu {
 	public void dessinerObjet(Graphics g)
 	{
 		g.setColor(Color.GREEN);
-		g.drawRect(this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y);
-		g.fillRect(this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y);
+		Image image_vorace = this.position.getLoftCorrespondant().getGzone().getToolkit().getImage("files/vorace.png");
+		g.drawImage(image_vorace, this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y, null);
 		if (this.aGagne)
 		{
 			g.drawString("Gagné !", this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y);

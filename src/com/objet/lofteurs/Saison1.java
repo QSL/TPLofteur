@@ -5,12 +5,12 @@ import java.awt.*;
 public class Saison1 {
 
 	public static int nombreLofteurs = 9;
-	public static int tailleLoft = 80;
+	public static int tailleLoft = 40;
 	public static final int nombreTours = 10000000;
-	public static double proportionErratique = 0.25f;
-	public static double proportionVorace = 0.25f;
-	public static double proportionCannibale = 0.25f;
-	public static double proportionLapin = 0.25f;
+	public static double proportionErratique = 0;
+	public static double proportionVorace = 0;
+	public static double proportionCannibale = 0;
+	public static double proportionLapin = 1;
 	/**
 	 * @param args
 	 */
@@ -20,7 +20,7 @@ public class Saison1 {
 	
 	public void primeTime() {
 		float prop_nourriture = 0.02f;
-		int valeurEnergieNourriture = 50;
+		int valeurEnergieNourriture = 20;
 		ZoneGraphique zone = new ZoneGraphique("Loft Story Sfeir Servais-Laval", tailleLoft, tailleLoft);
 		Loft loft = new Loft(tailleLoft,zone, prop_nourriture);
 		zone.ajouterObjet(loft);

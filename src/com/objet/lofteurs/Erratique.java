@@ -6,6 +6,7 @@ package com.objet.lofteurs;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 
 /**
  *
@@ -21,8 +22,8 @@ public class Erratique extends Neuneu {
 	{
 		if (!this.estExpulse) {
 			g.setColor(Color.BLACK);
-			g.drawRect(this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y);
-			g.fillRect(this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y);
+			Image image_erratique = this.position.getLoftCorrespondant().getGzone().getToolkit().getImage("files/erratique.png");
+			g.drawImage(image_erratique, this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y, null);
 			if (this.aGagne)
 			{
 				g.drawString("Gagné !", this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y);

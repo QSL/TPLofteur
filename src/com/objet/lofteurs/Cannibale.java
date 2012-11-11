@@ -6,6 +6,7 @@ package com.objet.lofteurs;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 
 /**
  *
@@ -24,8 +25,8 @@ public class Cannibale extends Neuneu {
 	public void dessinerObjet(Graphics g)
 	{
 		g.setColor(Color.RED);
-		g.drawRect(this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y);
-		g.fillRect(this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y);
+		Image image_cannibale = this.position.getLoftCorrespondant().getGzone().getToolkit().getImage("files/cannibale.png");
+		g.drawImage(image_cannibale, this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y, null);
 		if (this.aGagne)
 		{
 			g.drawString("Gagné !", this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y);

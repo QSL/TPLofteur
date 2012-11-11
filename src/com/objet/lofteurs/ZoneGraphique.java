@@ -24,8 +24,8 @@ public class ZoneGraphique extends JFrame {
 	 * la liste d'objets à dessiner
 	 */
 	LinkedList<ObjetDessinable> liste;
-	public static final int UNITE_X = 10;
-	public static final int UNITE_Y = 10;
+	public static final int UNITE_X = 20;
+	public static final int UNITE_Y = 20;
 	/**
 	 * constructeur
 	 *
