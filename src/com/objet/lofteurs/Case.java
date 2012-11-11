@@ -52,12 +52,12 @@ public class Case {
     // permet de retourner la nourriture sur la case
     // non implémentée car possiblement non utile
     public List<Nourriture> getNourriture(){
-    	System.out.print("get nourriture !");
+    	//System.out.print("get nourriture !");
     	List<Nourriture> nourritureSurLaCase = new ArrayList<Nourriture>();
         for (int i=0; i < this.loftCorrespondant.getAlimentation().size(); i++) {
         	if (this.loftCorrespondant.getAlimentation().get(i).getPosition().getAbscisse() == this.getAbscisse() && this.loftCorrespondant.getAlimentation().get(i).getPosition().getOrdonnee() == this.getOrdonnee())
             { 
-            	System.out.print("Nourriture OK !!");
+            	//System.out.print("Nourriture OK !!");
                 nourritureSurLaCase.add(this.loftCorrespondant.getAlimentation().get(i));
             }
         }
@@ -84,7 +84,7 @@ public class Case {
     	for (int i = 0; i < alimentationLoft.size() ; i++)
     	{
     		System.out.print("Alim " + i + "\n" + alimentationLoft.get(i).getClass() + " \n");
-    		System.out.print(alimentationLoft.get(i).getPosition().getAbscisse() + " ; " + alimentationLoft.get(i).getPosition().getOrdonnee() + " Compar� a " + alimentation.getPosition().getAbscisse() + " ; " +alimentation.getPosition().getOrdonnee() + "\n ");
+    		System.out.print(alimentationLoft.get(i).getPosition().getAbscisse() + " ; " + alimentationLoft.get(i).getPosition().getOrdonnee() + " Compar� a " + alimentation.getPosition().getAbscisse() + " ; " +alimentation.getPosition().getOrdonnee() + "\n ");
     		if (alimentationLoft.get(i).getPosition().getAbscisse() == alimentation.getPosition().getAbscisse() && alimentationLoft.get(i).getPosition().getOrdonnee() == alimentation.getPosition().getOrdonnee())
     		{
     			System.out.print("\n REMOVE \n");

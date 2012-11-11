@@ -25,20 +25,28 @@ public class Lapin extends Neuneu {
 		g.fillRect(this.getPosition().getAbscisse() * UNITE_X, this.getPosition().getOrdonnee() * UNITE_Y, UNITE_X, UNITE_Y);
 	}
 	public void cycleDeVie() {
-		System.out.print("Cycle de vie Lapin \n");
+		//System.out.print("Cycle de vie Lapin \n");
         if (!this.estExpulse){
         	if (Math.random() <= this.appetit_sexuel) {
-        		System.out.print("Appetit : "+ this.appetit_sexuel);
-        		System.out.print("Déplacement SEXUEL !!" + Math.random());
-        		this.seDeplacer(this.chercheMouvementCase(this.chercheNeuneuProche()));
+        		//System.out.print("Appetit : "+ this.appetit_sexuel);
+        		//System.out.print("Dï¿½placement SEXUEL !!" + Math.random());
+                        Case deplacement = this.chercheMouvementCase(this.chercheNeuneuProche());
+        		this.seDeplacer(deplacement);
+                        System.out.print("Le Neuneu se deplace sur la case " + deplacement.getAbscisse() + " ; " + deplacement.getOrdonnee() + "\n");
+
         	} 
-        	else this.seDeplacer(this.chercheCaseAleatoire());
+        	else
+                {
+                    Case deplacement = chercheCaseAleatoire();
+                    this.seDeplacer(deplacement);
+                    System.out.print("Le Neuneu se deplace sur la case " + deplacement.getAbscisse() + " ; " + deplacement.getOrdonnee() + "\n");
+                }
             if (this.getPosition().getNourriture().size() > 0)
             {
             	//let's eat what's on it !
             	for (int i = 0; i < this.getPosition().getNourriture().size(); i++)
             	{
-            		System.out.print("Nourriture !! " + i);
+            		System.out.print("Le neuneu mange la nourriture sur la case");
             		this.manger(this.getPosition().getNourriture().get(i));
             	}
             }
@@ -47,7 +55,7 @@ public class Lapin extends Neuneu {
             	//let's have sex !
             	for (int i = 0; i < this.getPosition().getNeuneu().size(); i++)
             	{
-            		System.out.print("SEEXX" + i);
+            		System.out.print("Le Neuneu fait de la sexualite avec l'autre neuneu sur la case");
             		this.seReproduire(this.getPosition().getNeuneu().get(i));
             	}
             }

@@ -110,7 +110,6 @@ public class Neuneu extends Mangeable {
 	}
 	public void manger(Mangeable n) {
 		int nindex = 0;
-		System.out.print("MANGEEER !");
         this.valeurEnergie=this.valeurEnergie+n.valeurEnergie;
         n.setValeurEnergie(0);	
         this.getPosition().getLoftCorrespondant().getListCases()[n.position.getAbscisse()][n.position.getOrdonnee()].removeMangeable(n);
@@ -136,7 +135,7 @@ public class Neuneu extends Mangeable {
         
 	public Case chercheNeuneuProche() {
             int i = 0;
-            System.out.print("cherche Neuneu proche \n");
+            //System.out.print("cherche Neuneu proche \n");
             Neuneu NeuneuProche = null;
             
             if (this.position.getLoftCorrespondant().getPopulation().get(0) == this)
