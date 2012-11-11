@@ -4,7 +4,10 @@
  */
 package com.objet.lofteurs;
 
-import java.awt.*;
+import java.awt.Graphics;
+import java.util.*;
+
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 /**
  *
@@ -108,10 +111,11 @@ public class Neuneu extends Mangeable {
 		else return null;
 	}
 	public void manger(Mangeable n) {
+		int nindex = 0;
 		System.out.print("MANGEEER !");
         this.valeurEnergie=this.valeurEnergie+n.valeurEnergie;
         n.setValeurEnergie(0);	
-        this.getPosition().removeMangeable(n);
+        this.getPosition().getLoftCorrespondant().getListCases()[n.position.getAbscisse()][n.position.getOrdonnee()].removeMangeable(n);
 	}
         
 	
@@ -125,7 +129,7 @@ public class Neuneu extends Mangeable {
             //on lance la recherche
             for (i=0; i < this.position.getLoftCorrespondant().getAlimentation().size() ; i++){
                 if(this.position.getLoftCorrespondant().getAlimentation().get(i).distance(this) < nourritureProche.distance(this)){
-                    nourritureProche=this.position.getLoftCorrespondant().getAlimentation().get(i);                                        
+                	nourritureProche = this.position.getLoftCorrespondant().getAlimentation().get(i);                                        
                 }
             }
             return nourritureProche.position;    
@@ -143,16 +147,16 @@ public class Neuneu extends Mangeable {
             return neuneuProche.position;             
         }
 	public Case chercheMouvementCase(Case CaseObjectif) {
-		Case nouvelleCase = CaseObjectif;
+		Case nouvelleCase = new Case(0, 0, null);
 		int deplacement_X, deplacement_Y;
-		deplacement_X = CaseObjectif.abscisse - this.position.abscisse;
-        deplacement_Y = CaseObjectif.ordonnee - this.position.ordonnee;
+		deplacement_X = CaseObjectif.getAbscisse() - this.position.getAbscisse();
+        deplacement_Y = CaseObjectif.getOrdonnee() - this.position.getOrdonnee();
         if (deplacement_X > 0) deplacement_X = 1;
         else if (deplacement_X < 0) deplacement_X = -1;
         if (deplacement_Y > 0) deplacement_Y = 1;
         else if (deplacement_Y < 0) deplacement_Y = -1;
-        nouvelleCase.setAbscisse(this.position.abscisse + deplacement_X);
-        nouvelleCase.setOrdonnee(this.position.ordonnee + deplacement_Y);
+        nouvelleCase.setAbscisse(this.position.getAbscisse() + deplacement_X);
+        nouvelleCase.setOrdonnee(this.position.getOrdonnee() + deplacement_Y);
 		return nouvelleCase;
 	}
 	@Override

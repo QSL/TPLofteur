@@ -25,11 +25,14 @@ public class Vorace extends Neuneu {
 	public void cycleDeVie() {
 		System.out.print("Cycle de Vie Vorace !\n");
         if (!this.estExpulse){
+        	System.out.print("Bouffe proche : " + this.chercheNourritureProche().getAbscisse() + " ; " + this.chercheNourritureProche().getOrdonnee());
+        	this.chercheMouvementCase(this.chercheNourritureProche());
         	System.out.print("\nNouveau mouvement : " + this.chercheMouvementCase(this.chercheNourritureProche()).getAbscisse() + " ; " + this.chercheMouvementCase(this.chercheNourritureProche()).getOrdonnee());
             this.seDeplacer(this.chercheMouvementCase(this.chercheNourritureProche()));
             if (this.getPosition().getNourriture().size() > 0)
             {
             	//let's eat what's on it !
+            	System.out.print("Food find : " + this.getPosition().getNourriture() + ", " + this.getPosition().getNourriture().size());
             	for (int i = 0; i < this.getPosition().getNourriture().size(); i++)
             	{
             		System.out.print("MANGEER");

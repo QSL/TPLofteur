@@ -78,16 +78,27 @@ public class Case {
     
     public void removeMangeable(Mangeable alimentation){
     	List<Nourriture> alimentationLoft = new ArrayList<Nourriture>();
-    	alimentation.setValeurEnergie(0);
+    	//alimentation.setValeurEnergie(0);
     	alimentationLoft = this.getLoftCorrespondant().getAlimentation();
+    	System.out.print("Liste Alimentation : \n");
     	for (int i = 0; i < alimentationLoft.size() ; i++)
     	{
+    		System.out.print("Alim " + i + "\n" + alimentationLoft.get(i).getClass() + " \n");
+    		System.out.print(alimentationLoft.get(i).getPosition().getAbscisse() + " ; " + alimentationLoft.get(i).getPosition().getOrdonnee() + " Comparé a " + alimentation.getPosition().getAbscisse() + " ; " +alimentation.getPosition().getOrdonnee() + "\n ");
     		if (alimentationLoft.get(i).getPosition().getAbscisse() == alimentation.getPosition().getAbscisse() && alimentationLoft.get(i).getPosition().getOrdonnee() == alimentation.getPosition().getOrdonnee())
     		{
     			System.out.print("\n REMOVE \n");
     			alimentationLoft.remove(i);
     		}
     	}
+    	for (int j = 0 ; j < this.getLoftCorrespondant().getGzone().getListe().size(); j++)
+    	{
+    		if (this.getLoftCorrespondant().getGzone().getListe().get(j) == alimentation)
+    		{
+    	    	this.getLoftCorrespondant().getGzone().getListe().remove(j);
+    		}
+    	}
+    	this.getLoftCorrespondant().setAlimentation(alimentationLoft);
     }
     
     public Loft getLoftCorrespondant(){

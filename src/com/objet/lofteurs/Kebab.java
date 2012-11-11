@@ -13,6 +13,8 @@ import java.awt.Graphics;
  */
 public class Kebab extends Nourriture {
 	public Kebab(Case m_case, int valeur_energie) {
+		System.out.print("Kebab gen " + m_case.getAbscisse() + " ; " + m_case.getOrdonnee());
+		
 		this.position = m_case;
 		this.valeurEnergie = valeur_energie;
 	}

@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Saison1 {
 
-	public static int nombreLofteurs = 2;
+	public static int nombreLofteurs = 3;
 	public static int tailleLoft = 30;
 	public static final int nombreTours = 1000;
 	public static float proportionErratique = 0;
@@ -19,7 +19,7 @@ public class Saison1 {
 	}
 	
 	public void primeTime() {
-		float prop_nourriture = 0.06f;
+		float prop_nourriture = 0.02f;
 		int valeurEnergieNourriture = 50;
 		ZoneGraphique zone = new ZoneGraphique("Loft Story Sfeir Servais-Laval", tailleLoft, tailleLoft);
 		Loft loft = new Loft(tailleLoft,zone, prop_nourriture);
@@ -39,7 +39,7 @@ public class Saison1 {
     		}
     	}
 		
-		for (int i=0 ; i<=nombreLofteurs ; i++) {
+		for (int i=0 ; i < nombreLofteurs ; i++) {
 			double x = Math.random();
 			if (x<proportionVorace) {
 				Vorace new_vorace = new Vorace(loft,
@@ -47,14 +47,12 @@ public class Saison1 {
 						(int)(Math.random()*tailleLoft),
 						3);
 				loft.addNeuneu(new_vorace);
-				//zone.ajouterObjet(new_vorace);
 			}
 			else {
 				x -= proportionVorace;
 				if (x<proportionErratique) {
 					Erratique new_erratique = new Erratique(loft,(int)(Math.random()*tailleLoft),(int)(Math.random()*tailleLoft));
 					loft.addNeuneu(new_erratique);
-					//zone.ajouterObjet(new_erratique);
 					
 				}
 				else {

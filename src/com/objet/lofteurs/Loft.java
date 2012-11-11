@@ -128,10 +128,6 @@ class Loft implements ObjetDessinable {
    
     public void go(int nombreTours){
     int tourActuel = 0;
-    Lapin new_lapin = new Lapin (this, 1, 1, 3);	
-
-	this.addNeuneu(new_lapin);
-	gzone.ajouterObjet(new_lapin);    
 	
     while(this.population.size() > 1 || tourActuel < nombreTours){
 	    int i, k, j;
@@ -144,19 +140,22 @@ class Loft implements ObjetDessinable {
 		        Thread.currentThread().sleep(200);
 		        this.gzone.repaint();
 		        this.population.get(i).cycleDeVie();
+		        
 		        for (j=0; j<this.population.size(); j++){
 			        if (this.population.get(j).getValeurEnergie() <= 0)
 			        {
 			        	this.expulse(this.population.get(j));
 			        }
 		        }
-		        /*for (k=0; k < this.alimentation.size(); k++)
+		        for (k=0; k < this.alimentation.size(); k++)
 		        {
+		        	System.out.print("Alimentation L2  : " + k);
+		        	System.out.print(this.alimentation.get(k).position.getAbscisse() + " ; " + this.alimentation.get(k).position.getOrdonnee());
 		        	if (this.alimentation.get(k).getValeurEnergie() <= 0)
 		        	{
 		        		this.alimentation.get(k).getPosition().removeMangeable(this.alimentation.get(k));
 		        	}
-		        }*/
+		        }
 		    }
 	        Thread.currentThread().sleep(125);
 		    tourActuel++;
@@ -172,5 +171,33 @@ class Loft implements ObjetDessinable {
     void remplissageAleatoire(float nb_nourriture) {
        
     }
+
+	public void setListCases(Case[][] listCases2) {
+		this.listcases = listCases2;
+	}
+	public int getLargeur() {
+		return largeur;
+	}
+	public void setLargeur(int largeur) {
+		this.largeur = largeur;
+	}
+	public int getHauteur() {
+		return hauteur;
+	}
+	public void setHauteur(int hauteur) {
+		this.hauteur = hauteur;
+	}
+	public Case[][] getListcases() {
+		return listcases;
+	}
+	public void setListcases(Case[][] listcases) {
+		this.listcases = listcases;
+	}
+	public ZoneGraphique getGzone() {
+		return gzone;
+	}
+	public void setGzone(ZoneGraphique gzone) {
+		this.gzone = gzone;
+	}
 
     }

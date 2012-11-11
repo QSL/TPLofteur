@@ -93,5 +93,13 @@ public class ZoneGraphique extends JFrame {
 	public int getHeight() {
 		return getContentPane().getHeight();
 	}
+
+	public LinkedList<ObjetDessinable> getListe() {
+		return liste;
+	}
+
+	public void setListe(LinkedList<ObjetDessinable> liste) {
+		this.liste = liste;
+	}
 	
 }
