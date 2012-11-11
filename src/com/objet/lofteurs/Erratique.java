@@ -15,7 +15,7 @@ public class Erratique extends Neuneu {
     public Erratique(Loft loft, int i, int j) {
     	this.position = loft.getListCases()[i][j];
     	this.estExpulse = false;
-    	this.valeurEnergie = 10;
+    	this.valeurEnergie = 100;
 	}
 	public void dessinerObjet(Graphics g)
 	{

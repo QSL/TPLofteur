@@ -16,7 +16,7 @@ public class Lapin extends Neuneu {
     public Lapin(Loft loft, int i, int j, float k) {
     	this.position = loft.getListCases()[i][j];
     	this.estExpulse = false;
-    	this.valeurEnergie = 50;
+    	this.valeurEnergie = 100;
 	}
 	public void dessinerObjet(Graphics g)
 	{

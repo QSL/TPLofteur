@@ -162,20 +162,6 @@ public class Neuneu extends Mangeable {
             
             return NeuneuProche.getPosition();
         }  
-            /*for (i=0; i< this.position.getLoftCorrespondant().getPopulation().size(); i++){
-            	if (this.position.getLoftCorrespondant().getPopulation().get(i) != (this)) {	
-	            	System.out.print("Compare " + this.position.getLoftCorrespondant().getPopulation().get(i).distance(this) + " et " + short_distance);
-	                if(this.position.getLoftCorrespondant().getPopulation().get(i).distance(this) < short_distance){
-	                	short_distance = this.position.getLoftCorrespondant().getPopulation().get(i).distance(this);
-	                    PositionNeuneuProche = this.position.getLoftCorrespondant().getPopulation().get(i).getPosition();
-	                }
-            	}
-            	else PositionNeuneuProche = this.position.getLoftCorrespondant().getPopulation().get(i).getPosition();
-            }
-            System.out.print("DIstance finale : " + short_distance + "\n");
-            System.out.print("Neuneu final : "+ PositionNeuneuProche);
-            return PositionNeuneuProche;             
-        }*/
             
 	public Case chercheMouvementCase(Case CaseObjectif) {
 		Case nouvelleCase = new Case(0, 0, null);

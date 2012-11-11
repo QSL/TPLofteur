@@ -14,7 +14,7 @@ public class Vorace extends Neuneu {
 	public Vorace(Loft loft, int i, int j, int k) {
     	this.position = loft.getListCases()[i][j];
     	this.estExpulse = false;
-    	this.valeurEnergie = 10;
+    	this.valeurEnergie = 50;
 	}
 	public void dessinerObjet(Graphics g)
 	{
