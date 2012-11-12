@@ -6,7 +6,7 @@ public class Saison1 {
 
 	public static int nombreLofteurs = 5;
 	public static int tailleLoft = 40;
-	public static final int nombreTours = 1000;
+	public static final int nombreTours = 10000;
 	public static double proportionErratique = 0.25f;
 	public static double proportionVorace = 0.25f;
 	public static double proportionCannibale = 0.25f;
