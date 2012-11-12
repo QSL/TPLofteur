@@ -141,6 +141,7 @@ class Loft implements ObjetDessinable {
     while(this.population.size() > 1 && tourActuel < nombreTours){
 	    int i, k, j;
 	    try {
+	    	System.out.print("nb habitants : " + this.population.size());
 		    for (i=0; i<this.population.size(); i++){
 		    	System.out.print("\n JOUEUR " + i + "\n");
 		    	System.out.print("Energ : " + this.population.get(i).getValeurEnergie());
@@ -149,7 +150,10 @@ class Loft implements ObjetDessinable {
 		        Thread.currentThread().sleep(100);
 		        this.gzone.repaint();
 		        this.population.get(i).cycleDeVie();
-		        
+		        if (this.population.get(i).getValeurEnergie() <= 0)
+		        {
+		        	this.expulse(this.population.get(i));
+		        }	        
 		        for (j=0; j<this.population.size(); j++){
 			        if (this.population.get(j).getValeurEnergie() <= 0)
 			        {
